@@ -2,7 +2,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { HamburgerMenuIcon } from "@radix-ui/react-icons";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { Button, buttonVariants } from "@/components/ui/button";
 
 const NavComponent = () => {

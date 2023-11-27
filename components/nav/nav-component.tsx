@@ -2,9 +2,13 @@
 import { useState } from "react";
 import Link from "next/link";
 import { HamburgerMenuIcon } from "@radix-ui/react-icons";
+import { useRouter } from "next/router";
+import { Button, buttonVariants } from "@/components/ui/button";
 
 const NavComponent = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const router = useRouter();
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -15,7 +19,9 @@ const NavComponent = () => {
       {/* Logo and Nav elements */}
       <div className="sm:flex gap-6 items-center hidden">
         <div className="font-bold text-2xl tracking-tight">
-          <Link href="/">MDX Blog</Link>
+          <Button variant={null} onClick={() => router.push("/")}>
+            MDX Blog
+          </Button>
         </div>
         <nav>
           <Link href="/about">about</Link>

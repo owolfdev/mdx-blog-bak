@@ -16,7 +16,7 @@ const NavComponent = () => {
       {/* Logo and Nav elements */}
       <div className="sm:flex gap-6 items-center hidden">
         <div className="font-bold text-2xl tracking-tight">
-          <a href="/">MDX Blog</a>
+          <Link href="/">MDX Blog</Link>
         </div>
         <nav>
           <Link href="/about">about</Link>

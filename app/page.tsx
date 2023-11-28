@@ -1,9 +1,7 @@
-export default function Home() {
+export default function Privacy() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        home
-      </div>
-    </main>
+    <div className="items-center justify-between text-sm flex flex-col gap-8 max-w-xl">
+      <h1 className="text-3xl sm:text-5xl font-bold text-center">MDX Blog</h1>
+    </div>
   );
 }

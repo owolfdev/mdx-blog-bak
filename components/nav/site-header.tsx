@@ -10,7 +10,7 @@ export function SiteHeader() {
   const outlineButtonVariant = buttonVariants({ variant: "outline" });
   return (
     <header className="sticky top-0 z-40 w-full border-b bg-background">
-      <div className="sm:px-8 px-4 flex items-center h-16 space-x-4 sm:justify-between sm:space-x-0">
+      <div className="sm:px-12 px-4 flex items-center h-16 space-x-4 sm:justify-between sm:space-x-0">
         <NavComponent />
         <div className="flex items-center justify-end flex-1 space-x-4">
           <div className="flex gap-4 items-center">

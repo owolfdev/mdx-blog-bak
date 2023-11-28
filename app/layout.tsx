@@ -32,7 +32,9 @@ export default function RootLayout({
             disableTransitionOnChange
           >
             <SiteHeader />
-            {children}
+            <main className="flex flex-col min-h-[calc(100vh-200px)]  items-center justify-between p-8 sm:pt-12">
+              {children}
+            </main>
             <Footer />
           </ThemeProvider>
         </body>

@@ -12,7 +12,11 @@ function AuthComponent() {
   const outlineButtonVariant = buttonVariants({ variant: "outline" });
   return isSignedIn ? (
     <div className="pr-2">
-      <UserButton afterSignOutUrl="/" />
+      <UserButton
+        afterSignOutUrl="/"
+        userProfileMode="navigation"
+        userProfileUrl="/user-profile"
+      />
     </div>
   ) : (
     isLoaded && (

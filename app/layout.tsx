@@ -31,9 +31,9 @@ export default function RootLayout({
           >
             <SiteHeader />
             <main className="flex flex-col items-center bg-blue-500 min-h-[calc(100vh-200px)] pt-8 pb-8 sm:pt-12">
-              <article className="max-w-xl sm:w-full mx-auto bg-pink-400 p-4">
+              <div className="max-w-xl sm:w-full mx-auto bg-pink-400 p-4">
                 {children}
-              </article>
+              </div>
             </main>
             <Footer />
           </ThemeProvider>

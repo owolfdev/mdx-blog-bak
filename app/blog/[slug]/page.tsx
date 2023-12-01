@@ -62,7 +62,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
   };
 
   return (
-    <article className="mdx py-8 sm:py-20 max-w-3xl px-4 mx-auto">
+    <article className="mdx  ">
       <h1>{props.frontMatter.title}</h1>
       <MDXRemote source={props.content} components={components} />
     </article>

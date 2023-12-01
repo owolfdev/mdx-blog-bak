@@ -32,7 +32,7 @@ const NavComponent: React.FC = () => {
     <div className="flex items-center justify-between w-full">
       <div className="sm:flex gap-6 items-center hidden">
         <div className="font-bold text-2xl tracking-tight">
-          <Link href="/">MDX Blog</Link>
+          <Link href="/blog">MDX Blog</Link>
         </div>
         {/* <nav>
           <Link href="/about">About</Link>
@@ -53,8 +53,14 @@ const NavComponent: React.FC = () => {
         <Link href="/" onClick={closeMenu}>
           Home
         </Link>
+        <Link href="/blog" onClick={closeMenu}>
+          Blog
+        </Link>
         <Link href="/about" onClick={closeMenu}>
           About
+        </Link>
+        <Link href="/contact" onClick={closeMenu}>
+          Contact
         </Link>
         {/* Add other mobile navigation links here, each with onClick={closeMenu} */}
       </div>

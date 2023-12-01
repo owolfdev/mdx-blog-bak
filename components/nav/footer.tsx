@@ -7,8 +7,9 @@ export function Footer() {
         <div className="flex gap-6 items-center">
           <div className="">&copy; {new Date().getFullYear()} MDX Blog</div>
         </div>
-        <nav className="flex gap-6 items-center text-sm">
+        <nav className="flex gap-4 items-center text-sm">
           <Link href="/">Home</Link>
+          <Link href="/blog">Blog</Link>
           <Link href="/about">About</Link>
           <Link href="/contact">Contact</Link>
           <Link href="/privacy">Privacy</Link>

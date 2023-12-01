@@ -32,14 +32,13 @@ export default function Home() {
   });
 
   return (
-    <div>
+    <div className="">
       <div className="flex flex-col gap-8">
-        <h1 className="font-bold text-4xl">Next.js MDX Blog</h1>
-        <div className="flex flex-col gap-2"></div>
-
+        <h1 className="text-3xl sm:text-5xl font-bold text-center">
+          Next.js MDX Blog
+        </h1>
         <section className="flex flex-col gap-4">
           <h2 className="font-bold text-2xl">Blog Posts</h2>
-
           <ul className="flex flex-col gap-4">
             {blogs.map((blog) => (
               <li key={blog.slug} className="border px-3 py-2 rounded-xl">

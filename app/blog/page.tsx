@@ -42,60 +42,74 @@ const Blog = async ({
   const disabledLinkStyle = "opacity-50 cursor-not-allowed";
 
   return (
-    <div>
-      <ul className="flex flex-col gap-4">
-        {blogs.map((blog: BlogPost) => (
-          <li key={blog.slug} className=" border px-3 py-2 rounded-xl">
-            <Link href={`/blog/${blog.slug}`}>
-              <h3 className="text-2xl font-bold">{blog.title}</h3>
-              <div className="text-sm">{blog.formattedDate}</div>
-              <div>{blog.description}</div>
-            </Link>
-          </li>
-        ))}
-      </ul>
-      {/* Pagination */}
-
-      <div className="flex gap-2 py-6 items-center px-2">
-        {currentPage === 1 ? (
-          <span className={`${disabledLinkStyle}`}>{`<<`}</span>
+    <div className="flex flex-col gap-8">
+      <h1 className="text-4xl sm:text-5xl font-bold text-center">Blog</h1>
+      <div>
+        {blogs.length === 0 ? (
+          <div className="text-center text-lg flex flex-col justify-center ">
+            <span className="pb-[100px] pt-[100px]">
+              No blog posts found on this page...
+            </span>
+          </div>
         ) : (
-          <span>
-            <Link href={`/blog?limit=${postsPerPage}&page=${1}`}>{`<<`}</Link>
-          </span>
+          <ul className="flex flex-col gap-4">
+            {blogs.map((blog: BlogPost) => (
+              <li key={blog.slug} className=" border px-3 py-2 rounded-xl">
+                <Link href={`/blog/${blog.slug}`}>
+                  <h3 className="text-2xl font-bold">{blog.title}</h3>
+                  <div className="text-sm">{blog.formattedDate}</div>
+                  <div>{blog.description}</div>
+                </Link>
+              </li>
+            ))}
+          </ul>
         )}
-        {isPreviousDisabled ? (
-          <span className={`${disabledLinkStyle}`}>Previous</span>
-        ) : (
-          <Link
-            className={``}
-            href={`/blog?limit=${postsPerPage}&page=${currentPage - 1}`}
-          >
-            Previous
-          </Link>
-        )}
-
-        <span>- {`Page ${currentPage} of ${totalPages}`} -</span>
-
-        {isNextDisabled ? (
-          <span className={`${disabledLinkStyle}`}>Next</span>
-        ) : (
-          <Link
-            className={``}
-            href={`/blog?limit=${postsPerPage}&page=${currentPage + 1}`}
-          >
-            Next
-          </Link>
-        )}
-        {currentPage === totalPages ? (
-          <span className={`${disabledLinkStyle}`}>{`>>`}</span>
-        ) : (
-          <span>
+        {/* pagination */}
+        <div
+          id="pagination"
+          className="flex gap-2 py-6 items-center justify-center"
+        >
+          {currentPage === 1 ? (
+            <span className={`${disabledLinkStyle}`}>{`<<`}</span>
+          ) : (
+            <span>
+              <Link href={`/blog?limit=${postsPerPage}&page=${1}`}>{`<<`}</Link>
+            </span>
+          )}
+          {isPreviousDisabled ? (
+            <span className={`${disabledLinkStyle}`}>Previous</span>
+          ) : (
             <Link
-              href={`/blog?limit=${postsPerPage}&page=${totalPages}`}
-            >{`>>`}</Link>
-          </span>
-        )}
+              className={``}
+              href={`/blog?limit=${postsPerPage}&page=${currentPage - 1}`}
+            >
+              Previous
+            </Link>
+          )}
+
+          <span>- {`Page ${currentPage} of ${totalPages}`} -</span>
+
+          {isNextDisabled ? (
+            <span className={`${disabledLinkStyle}`}>Next</span>
+          ) : (
+            <Link
+              className={``}
+              href={`/blog?limit=${postsPerPage}&page=${currentPage + 1}`}
+            >
+              Next
+            </Link>
+          )}
+          {currentPage === totalPages ? (
+            <span className={`${disabledLinkStyle}`}>{`>>`}</span>
+          ) : (
+            <span>
+              <Link
+                href={`/blog?limit=${postsPerPage}&page=${totalPages}`}
+              >{`>>`}</Link>
+            </span>
+          )}
+        </div>
+        {/* pagination end */}
       </div>
     </div>
   );

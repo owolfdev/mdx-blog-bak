@@ -33,6 +33,7 @@ const Blog = async ({
     postsPerPage,
     currentPage
   );
+
   const totalPages = Math.ceil(totalPosts / postsPerPage);
 
   //button disabled styles
@@ -56,7 +57,13 @@ const Blog = async ({
       {/* Pagination */}
 
       <div className="flex gap-2 py-6 items-center px-2">
-        <span>{`<<`}</span>
+        {currentPage === 1 ? (
+          <span className={`${disabledLinkStyle}`}>{`<<`}</span>
+        ) : (
+          <span>
+            <Link href={`/blog?limit=${postsPerPage}&page=${1}`}>{`<<`}</Link>
+          </span>
+        )}
         {isPreviousDisabled ? (
           <span className={`${disabledLinkStyle}`}>Previous</span>
         ) : (
@@ -80,7 +87,15 @@ const Blog = async ({
             Next
           </Link>
         )}
-        <span>{`>>`}</span>
+        {currentPage === totalPages ? (
+          <span className={`${disabledLinkStyle}`}>{`>>`}</span>
+        ) : (
+          <span>
+            <Link
+              href={`/blog?limit=${postsPerPage}&page=${totalPages}`}
+            >{`>>`}</Link>
+          </span>
+        )}
       </div>
     </div>
   );

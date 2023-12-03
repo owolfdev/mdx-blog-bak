@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 
 import { getPosts } from "@/lib/posts.mjs";
 
@@ -15,10 +15,6 @@ interface BlogPost {
   formattedDate?: string; // Optional, as it will be added later
 }
 
-interface BlogProps {
-  blogs: BlogPost[];
-}
-
 const Blog = async ({
   searchParams,
 }: {
@@ -29,6 +25,8 @@ const Blog = async ({
   const postsPerPage =
     typeof searchParams.limit === "string" ? Number(searchParams.limit) : 5;
 
+  const defaultButton = buttonVariants({ variant: "default", size: "default" });
+
   //filter by type, page, limit
   const { posts: blogs, totalPosts } = getPosts(
     "blog",
@@ -36,11 +34,6 @@ const Blog = async ({
     currentPage
   );
   const totalPages = Math.ceil(totalPosts / postsPerPage);
-
-  console.log("totalPages", totalPages);
-  console.log("currentPage", currentPage);
-  console.log("postsPerPage", postsPerPage);
-  console.log("blogs", blogs.length);
 
   return (
     <div>
@@ -58,16 +51,26 @@ const Blog = async ({
       {/* Pagination */}
       <div className="flex gap-2 py-6 items-center">
         <Button size={"sm"} disabled={currentPage <= 1}>
-          <Link href={`/blog?limit=${postsPerPage}&page=${currentPage - 1}`}>
+          <Link
+            className="h-full w-full flex items-center flex-grow"
+            href={`/blog?limit=${postsPerPage}&page=${currentPage - 1}`}
+          >
             Previous
           </Link>
         </Button>
         <span>{`Page ${currentPage} of ${totalPages}`}</span>
 
-        <Button size={"sm"} disabled={currentPage >= blogs.length}>
+        <Button
+          className="flex"
+          size={"sm"}
+          disabled={currentPage >= totalPages}
+        >
           {" "}
-          <Link href={`/blog?limit=${postsPerPage}&page=${currentPage + 1}`}>
-            Next
+          <Link
+            className=" h-full w-full flex items-center flex-grow"
+            href={`/blog?limit=${postsPerPage}&page=${currentPage + 1}`}
+          >
+            <div className="w-full">Next</div>
           </Link>
         </Button>
       </div>

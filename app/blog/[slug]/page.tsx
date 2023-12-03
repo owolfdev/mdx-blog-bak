@@ -53,7 +53,11 @@ export async function generateStaticParams() {
   return params;
 }
 
-export default async function Page({ params }: { params: { slug: string } }) {
+export default async function BlogPage({
+  params,
+}: {
+  params: { slug: string };
+}) {
   const props = await getPost(params);
 
   const components = {
@@ -62,7 +66,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
   };
 
   return (
-    <article className="mdx  ">
+    <article className="mdx">
       <h1>{props.frontMatter.title}</h1>
       <MDXRemote source={props.content} components={components} />
     </article>

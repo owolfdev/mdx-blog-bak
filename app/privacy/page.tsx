@@ -3,10 +3,10 @@ import ReactMarkdown from "react-markdown";
 export default function Privacy() {
   return (
     <div className="flex flex-col gap-8">
-      <h1 className="text-3xl sm:text-5xl font-bold text-center">
+      <h1 className="text-4xl sm:text-5xl font-bold text-center">
         Privacy Policy
       </h1>
-      <ReactMarkdown className="text-base flex flex-col gap-6">
+      <ReactMarkdown className="flex flex-col gap-6">
         {privacyContent}
       </ReactMarkdown>
     </div>

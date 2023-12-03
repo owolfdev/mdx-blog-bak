@@ -1,0 +1,161 @@
+[
+  {
+    "slug": ".DS_Store"
+  },
+  {
+    "slug": "eighth-blog",
+    "date": "2023-12-01",
+    "type": "blog",
+    "title": "8. Eighth blog post",
+    "description": "Blog post 8.",
+    "image": "https://images.unsplash.com/photo-1515377905703-5b1f2e4d7c00",
+    "author": "John Doe",
+    "tags": [
+      "blog",
+      "post",
+      "lorem"
+    ]
+  },
+  {
+    "slug": "fifth-blog",
+    "date": "2023-11-28",
+    "type": "blog",
+    "title": "5. Fifth blog post",
+    "description": "Blog post 5.",
+    "image": "https://images.unsplash.com/photo-1621619856624-42fd193a0661",
+    "author": "John Doe",
+    "tags": [
+      "blog",
+      "post",
+      "lorem"
+    ]
+  },
+  {
+    "slug": "first-blog",
+    "date": "2023-11-01",
+    "type": "blog",
+    "title": "1. Exploring the Beauty of Nature",
+    "description": "A journey through the stunning landscapes captured in photographs.",
+    "image": "https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0",
+    "author": "John Doe",
+    "tags": [
+      "nature",
+      "photography",
+      "travel",
+      "adventure"
+    ]
+  },
+  {
+    "slug": "fourth-blog",
+    "date": "2023-11-27",
+    "type": "blog",
+    "title": "4. Fourth blog post",
+    "description": "Another blog post.",
+    "image": "https://source.unsplash.com/1600x900/?nature,water",
+    "author": "John Doe",
+    "tags": [
+      "tag1",
+      "tag2",
+      "tag3"
+    ]
+  },
+  {
+    "slug": "ninth-blog",
+    "date": "2023-12-02",
+    "type": "blog",
+    "title": "9. Ninth blog post",
+    "description": "Blog post 9.",
+    "image": "https://images.unsplash.com/photo-1515377905703-5b1f2e4d7c00",
+    "author": "John Doe",
+    "tags": [
+      "blog",
+      "post",
+      "lorem"
+    ]
+  },
+  {
+    "slug": "project-post",
+    "date": "2023-11-04",
+    "type": "project",
+    "title": "Project Post",
+    "description": "A Project Post.",
+    "image": "https://source.unsplash.com/1600x900/?nature,water",
+    "author": "John Doe",
+    "tags": [
+      "tag1",
+      "tag2",
+      "tag3"
+    ]
+  },
+  {
+    "slug": "second-blog",
+    "date": "2023-11-25",
+    "type": "blog",
+    "title": "2. Essential Coding Tips for Beginners",
+    "description": "A beginner's guide to coding with some useful tips and code examples.",
+    "image": "https://images.unsplash.com/photo-1516259762381-22954d7d3ad2?q=80&w=2689&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "author": "John Doe",
+    "tags": [
+      "tag1",
+      "tag2",
+      "tag3"
+    ]
+  },
+  {
+    "slug": "seventh-blog",
+    "date": "2023-11-30",
+    "type": "blog",
+    "title": "7. Seventh blog post",
+    "description": "Blog post 7.",
+    "image": "https://images.unsplash.com/photo-1515377905703-5b1f2e4d7c00",
+    "author": "John Doe",
+    "tags": [
+      "blog",
+      "post",
+      "lorem"
+    ]
+  },
+  {
+    "slug": "sixth-blog",
+    "date": "2023-11-29",
+    "type": "blog",
+    "title": "6. Sixth blog post",
+    "description": "Blog post 6.",
+    "image": "https://images.unsplash.com/photo-1515377905703-5b1f2e4d7c00",
+    "author": "John Doe",
+    "tags": [
+      "blog",
+      "post",
+      "lorem"
+    ]
+  },
+  {
+    "slug": "tenth-blog",
+    "date": "2023-12-03",
+    "type": "blog",
+    "title": "10. Tenth blog post",
+    "description": "Blog post 10.",
+    "image": "https://images.unsplash.com/photo-15153771005703-5b1f2e4d7c00",
+    "author": "John Doe",
+    "tags": [
+      "blog",
+      "post",
+      "lorem"
+    ]
+  },
+  {
+    "slug": "third-blog",
+    "date": "2023-11-26",
+    "type": "blog",
+    "title": "3. The Influence of Music",
+    "description": "Exploring how music impacts our emotions and daily life.",
+    "image": "https://images.unsplash.com/photo-1516259762381-22954d7d3ad2?q=80&w=2689&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "author": "John Doe",
+    "tags": [
+      "music",
+      "emotions",
+      "influence",
+      "life"
+    ]
+  }
+]

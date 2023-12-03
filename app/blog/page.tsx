@@ -1,57 +1,78 @@
-import fs from "fs";
-import path from "path";
-import matter from "gray-matter";
 import Link from "next/link";
+import { Button } from "@/components/ui/button";
 
-export default function Home() {
-  const blogDirectory = path.join(process.cwd(), "/data/posts");
-  const fileNames = fs.readdirSync(blogDirectory);
+import { getPosts } from "@/lib/posts.mjs";
 
-  const blogs = fileNames.map((fileName) => {
-    const slug = fileName.replace(".mdx", "");
-    const fullPath = path.join(blogDirectory, fileName);
-    const fileContents = fs.readFileSync(fullPath, "utf8");
+interface BlogPost {
+  slug: string;
+  type: string;
+  date: string;
+  title: string;
+  description: string;
+  image: string;
+  author: string;
+  tags: string[];
+  formattedDate?: string; // Optional, as it will be added later
+}
 
-    const { data: frontMatter } = matter(fileContents);
+interface BlogProps {
+  blogs: BlogPost[];
+}
 
-    const date = new Date(frontMatter.date);
+const Blog = async ({
+  searchParams,
+}: {
+  searchParams: { [key: string]: string | string[] | undefined };
+}) => {
+  const currentPage =
+    typeof searchParams.page === "string" ? Number(searchParams.page) : 1;
+  const postsPerPage =
+    typeof searchParams.limit === "string" ? Number(searchParams.limit) : 5;
 
-    // Format the date to a readable string format
-    // For example, "October 1, 2021"
-    const formattedDate = date.toLocaleDateString("en-US", {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-    });
+  //filter by type, page, limit
+  const { posts: blogs, totalPosts } = getPosts(
+    "blog",
+    postsPerPage,
+    currentPage
+  );
+  const totalPages = Math.ceil(totalPosts / postsPerPage);
 
-    return {
-      slug,
-      formattedDate,
-      meta: frontMatter,
-    };
-  });
+  console.log("totalPages", totalPages);
+  console.log("currentPage", currentPage);
+  console.log("postsPerPage", postsPerPage);
+  console.log("blogs", blogs.length);
 
   return (
-    <div className="">
-      <div className="flex flex-col gap-8">
-        <h1 className="text-3xl sm:text-5xl font-bold text-center">
-          Next.js MDX Blog
-        </h1>
-        <section className="flex flex-col gap-4">
-          <h2 className="font-bold text-2xl">Blog Posts</h2>
-          <ul className="flex flex-col gap-4">
-            {blogs.map((blog) => (
-              <li key={blog.slug} className="border px-3 py-2 rounded-xl">
-                <Link href={`/blog/${blog.slug}`}>
-                  <h3 className="font-bold text-xl">{blog.meta.title}</h3>
-                  <div>{blog.formattedDate}</div>
-                  <div>{blog.meta.description}</div>
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </section>
+    <div>
+      <ul className="flex flex-col gap-4">
+        {blogs.map((blog: BlogPost) => (
+          <li key={blog.slug} className=" border px-3 py-2 rounded-xl">
+            <Link href={`/blog/${blog.slug}`}>
+              <h3 className="text-2xl font-bold">{blog.title}</h3>
+              <div className="text-sm">{blog.formattedDate}</div>
+              <div>{blog.description}</div>
+            </Link>
+          </li>
+        ))}
+      </ul>
+      {/* Pagination */}
+      <div className="flex gap-2 py-6 items-center">
+        <Button size={"sm"} disabled={currentPage <= 1}>
+          <Link href={`/blog?limit=${postsPerPage}&page=${currentPage - 1}`}>
+            Previous
+          </Link>
+        </Button>
+        <span>{`Page ${currentPage} of ${totalPages}`}</span>
+
+        <Button size={"sm"} disabled={currentPage >= blogs.length}>
+          {" "}
+          <Link href={`/blog?limit=${postsPerPage}&page=${currentPage + 1}`}>
+            Next
+          </Link>
+        </Button>
       </div>
     </div>
   );
-}
+};
+
+export default Blog;

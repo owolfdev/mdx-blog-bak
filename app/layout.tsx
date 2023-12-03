@@ -30,8 +30,8 @@ export default function RootLayout({
             disableTransitionOnChange
           >
             <SiteHeader />
-            <main className="flex flex-col items-center bg-blue-500 min-h-[calc(100vh-200px)] pt-8 pb-8 sm:pt-12">
-              <div className="max-w-xl sm:w-full mx-auto bg-pink-400 p-4">
+            <main className="flex flex-col items-center  min-h-[calc(100vh-200px)] pt-8 pb-8 px-6 sm:px-0 sm:pt-12">
+              <div className="text-lg sm:text-base max-w-xl w-full mx-auto">
                 {children}
               </div>
             </main>

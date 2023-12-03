@@ -35,6 +35,11 @@ const Blog = async ({
   );
   const totalPages = Math.ceil(totalPosts / postsPerPage);
 
+  //button disabled styles
+  const isPreviousDisabled = currentPage <= 1;
+  const isNextDisabled = currentPage >= totalPages;
+  const disabledLinkStyle = "opacity-50 cursor-not-allowed";
+
   return (
     <div>
       <ul className="flex flex-col gap-4">
@@ -49,30 +54,33 @@ const Blog = async ({
         ))}
       </ul>
       {/* Pagination */}
-      <div className="flex gap-2 py-6 items-center">
-        <Button size={"sm"} disabled={currentPage <= 1}>
+
+      <div className="flex gap-2 py-6 items-center px-2">
+        <span>{`<<`}</span>
+        {isPreviousDisabled ? (
+          <span className={`${disabledLinkStyle}`}>Previous</span>
+        ) : (
           <Link
-            className="h-full w-full flex items-center flex-grow"
+            className={``}
             href={`/blog?limit=${postsPerPage}&page=${currentPage - 1}`}
           >
             Previous
           </Link>
-        </Button>
-        <span>{`Page ${currentPage} of ${totalPages}`}</span>
+        )}
 
-        <Button
-          className="flex"
-          size={"sm"}
-          disabled={currentPage >= totalPages}
-        >
-          {" "}
+        <span>- {`Page ${currentPage} of ${totalPages}`} -</span>
+
+        {isNextDisabled ? (
+          <span className={`${disabledLinkStyle}`}>Next</span>
+        ) : (
           <Link
-            className=" h-full w-full flex items-center flex-grow"
+            className={``}
             href={`/blog?limit=${postsPerPage}&page=${currentPage + 1}`}
           >
-            <div className="w-full">Next</div>
+            Next
           </Link>
-        </Button>
+        )}
+        <span>{`>>`}</span>
       </div>
     </div>
   );

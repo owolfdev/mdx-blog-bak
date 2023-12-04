@@ -66,7 +66,7 @@ export default async function BlogPage({
   };
 
   return (
-    <article className="mdx">
+    <article className="mdx ">
       <h1>{props.frontMatter.title}</h1>
       <MDXRemote source={props.content} components={components} />
     </article>

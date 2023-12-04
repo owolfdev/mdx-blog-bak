@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Button, buttonVariants } from "@/components/ui/button";
-
+import SelectLimitPosts from "./select-limit-posts";
+import SearchPosts from "./search-posts";
 import { getPosts } from "@/lib/posts.mjs";
 
 interface BlogPost {
@@ -23,7 +24,8 @@ const Blog = async ({
   const currentPage =
     typeof searchParams.page === "string" ? Number(searchParams.page) : 1;
   const postsPerPage =
-    typeof searchParams.limit === "string" ? Number(searchParams.limit) : 5;
+    typeof searchParams.limit === "string" ? Number(searchParams.limit) : 10;
+  const searchTerm = searchParams.search || "";
 
   const defaultButton = buttonVariants({ variant: "default", size: "default" });
 
@@ -31,7 +33,8 @@ const Blog = async ({
   const { posts: blogs, totalPosts } = getPosts(
     "blog",
     postsPerPage,
-    currentPage
+    currentPage,
+    searchTerm
   );
 
   const totalPages = Math.ceil(totalPosts / postsPerPage);
@@ -41,9 +44,27 @@ const Blog = async ({
   const isNextDisabled = currentPage >= totalPages;
   const disabledLinkStyle = "opacity-50 cursor-not-allowed";
 
+  // Utility function to trim description
+  function trimDescription(description: string) {
+    const wordLimit = 20;
+    const words = description.split(" ");
+
+    if (words.length > wordLimit) {
+      return words.slice(0, wordLimit).join(" ") + "...";
+    } else {
+      return description;
+    }
+  }
+
   return (
-    <div className="flex flex-col gap-8">
-      <h1 className="text-4xl sm:text-5xl font-bold text-center">Blog</h1>
+    <div className="flex flex-col gap-8 pb-6 ">
+      <h1 className="text-4xl sm:text-5xl font-bold text-center">MDX Blog</h1>
+      <SearchPosts
+        currentPage={currentPage}
+        postsPerPage={postsPerPage}
+        limit={postsPerPage}
+      />
+
       <div>
         {blogs.length === 0 ? (
           <div className="text-center text-lg flex flex-col justify-center ">
@@ -58,7 +79,9 @@ const Blog = async ({
                 <Link href={`/blog/${blog.slug}`}>
                   <h3 className="text-2xl font-bold">{blog.title}</h3>
                   <div className="text-sm">{blog.formattedDate}</div>
-                  <div>{blog.description}</div>
+                  <div title={blog.description}>
+                    {trimDescription(blog.description)}
+                  </div>
                 </Link>
               </li>
             ))}
@@ -67,13 +90,15 @@ const Blog = async ({
         {/* pagination */}
         <div
           id="pagination"
-          className="flex gap-2 py-6 items-center justify-center"
+          className="flex gap-2 pt-8 pb-2 items-center justify-center"
         >
           {currentPage === 1 ? (
             <span className={`${disabledLinkStyle}`}>{`<<`}</span>
           ) : (
             <span>
-              <Link href={`/blog?limit=${postsPerPage}&page=${1}`}>{`<<`}</Link>
+              <Link
+                href={`/blog?limit=${postsPerPage}&page=${1}&search=${searchTerm}`}
+              >{`<<`}</Link>
             </span>
           )}
           {isPreviousDisabled ? (
@@ -81,7 +106,9 @@ const Blog = async ({
           ) : (
             <Link
               className={``}
-              href={`/blog?limit=${postsPerPage}&page=${currentPage - 1}`}
+              href={`/blog?limit=${postsPerPage}&page=${
+                currentPage - 1
+              }&search=${searchTerm}`}
             >
               Previous
             </Link>
@@ -94,7 +121,9 @@ const Blog = async ({
           ) : (
             <Link
               className={``}
-              href={`/blog?limit=${postsPerPage}&page=${currentPage + 1}`}
+              href={`/blog?limit=${postsPerPage}&page=${
+                currentPage + 1
+              }&search=${searchTerm}`}
             >
               Next
             </Link>
@@ -104,11 +133,17 @@ const Blog = async ({
           ) : (
             <span>
               <Link
-                href={`/blog?limit=${postsPerPage}&page=${totalPages}`}
+                href={`/blog?limit=${postsPerPage}&page=${totalPages}&search=${searchTerm}`}
               >{`>>`}</Link>
             </span>
           )}
         </div>
+        {/* New component for selecting posts per page */}
+        <SelectLimitPosts
+          postsPerPage={postsPerPage}
+          currentPage={currentPage}
+          searchTerm={searchTerm as string}
+        />
         {/* pagination end */}
       </div>
     </div>

@@ -1,26 +1,59 @@
 "use client";
-import React, { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
+import React, { useState, useEffect, use } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 
 function SelectLimitPosts({
   postsPerPage,
   currentPage,
   searchTerm,
+  numBlogs,
 }: {
   postsPerPage: number;
   currentPage: number;
   searchTerm: string;
+  numBlogs: number;
 }) {
   const [localPostsPerPage, setLocalPostsPerPage] = useState(postsPerPage);
 
   const router = useRouter();
+
+  const searchParams = useSearchParams();
+  let limit = searchParams.get("limit");
+
+  useEffect(() => {
+    if (limit === null) {
+      if (postsPerPage !== 10) {
+        limit = postsPerPage.toString();
+      } else {
+        limit = "10";
+      }
+    }
+    console.log("searchParams", searchParams);
+    console.log("limit", limit);
+    const limitFromUrl = parseInt(limit as string);
+    if (!isNaN(limitFromUrl) && limitFromUrl !== localPostsPerPage) {
+      setLocalPostsPerPage(limitFromUrl);
+    }
+  }, [searchParams, postsPerPage]);
 
   // Function to handle selection change
   const handlePostsPerPageChange = (newLimit: number) => {
     setLocalPostsPerPage(newLimit);
     //setLimit(newLimit); // Update the URL parameter, if applicable
     // You might need to fetch posts again here or it could be handled by a useEffect
-    router.push(`/blog?limit=${newLimit}&page=${1}&search=${searchTerm}`);
+    if (numBlogs === 0) {
+      router.push(
+        `/blog?limit=${newLimit}&page=${1}${
+          searchTerm ? `&search=${searchTerm}` : ""
+        }`
+      );
+    } else {
+      router.push(
+        `/blog?limit=${newLimit}&page=${currentPage}${
+          searchTerm ? `&search=${searchTerm}` : ""
+        }`
+      );
+    }
   };
 
   return (

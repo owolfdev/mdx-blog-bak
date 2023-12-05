@@ -2,35 +2,58 @@
 import { usePathname, useSearchParams, useRouter } from "next/navigation";
 import { Input } from "@/components/ui/input";
 import { MagnifyingGlassIcon } from "@radix-ui/react-icons";
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect, useRef } from "react";
 import debounce from "lodash/debounce";
-import { useEffect } from "react";
-import path from "path";
 
 const SearchPosts = ({
-  postsPerPage,
   currentPage,
   limit,
+  numBlogs,
 }: {
-  postsPerPage: number;
   currentPage: number;
   limit: number;
+  numBlogs: number;
 }) => {
   const router = useRouter();
-  const pathname = usePathname();
   const searchParams = useSearchParams();
   const [inputValue, setInputValue] = useState("");
 
-  // Clear the input when the current path is /blog
-  // useEffect(() => {
-  //   if (pathname +  searchParams === "/blog") {
-  //     setInputValue("");
-  //   }
-  // }, [pathname]);
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  let search = searchParams.get("search");
+
+  useEffect(() => {
+    // Focus the input whenever inputValue changes
+    if (inputRef.current && search) {
+      inputRef.current.focus();
+    }
+  }, [inputValue]);
+
+  useEffect(() => {
+    if (search === null) {
+      search = "";
+    }
+    const searchFromUrl = search as string;
+    if (searchFromUrl !== inputValue) {
+      setInputValue(searchFromUrl);
+    }
+  }, [searchParams]);
 
   const updateSearch = useCallback(
     debounce((searchTerm: string) => {
-      router.push(`/blog?limit=${limit}&page=${1}&search=${searchTerm}`);
+      if (numBlogs === 0) {
+        router.push(
+          `/blog?limit=${limit}&page=${1}${
+            searchTerm ? `&search=${searchTerm}` : ""
+          }`
+        );
+      } else {
+        router.push(
+          `/blog?limit=${limit}&page=${currentPage}${
+            searchTerm ? `&search=${searchTerm}` : ""
+          }`
+        );
+      }
     }, 500),
     []
   );
@@ -42,22 +65,22 @@ const SearchPosts = ({
   };
 
   return (
-    <form onSubmit={(e) => e.preventDefault()}>
-      <div className="flex gap-2 items-center">
-        <div className="icon-container">
-          <MagnifyingGlassIcon className="w-[24px] h-[24px]" />
-        </div>
-        <div className="w-2/3">
-          <Input
-            type="text"
-            name="searchTerm"
-            placeholder="enter search term"
-            value={inputValue}
-            onChange={handleChange}
-          />
-        </div>
+    <div className="flex gap-2 items-center w-1/2 sm:w-2/3 ">
+      <div className="icon-container">
+        <MagnifyingGlassIcon className="w-[24px] h-[24px]" />
       </div>
-    </form>
+      <div className="w-full">
+        <Input
+          ref={inputRef}
+          type="text"
+          name="searchTerm"
+          placeholder="Search"
+          value={inputValue}
+          onChange={handleChange}
+          className="text-lg sm:text-sm"
+        />
+      </div>
+    </div>
   );
 };
 

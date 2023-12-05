@@ -12,7 +12,7 @@ export default authMiddleware({
     "/about",
     "/privacy",
     "/blog",
-    "/blog/[slug]",
+    "/blog/:path*",
   ],
 });
 

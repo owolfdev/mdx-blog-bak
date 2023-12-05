@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Button, buttonVariants } from "@/components/ui/button";
 import SelectLimitPosts from "./select-limit-posts";
 import SearchPosts from "./search-posts";
+import SortPosts from "./sort-posts";
 import { getPosts } from "@/lib/posts.mjs";
 
 interface BlogPost {
@@ -57,17 +58,23 @@ const Blog = async ({
   }
 
   return (
-    <div className="flex flex-col gap-8 pb-6 ">
+    <div className="flex flex-col gap-8 pb-6">
       <h1 className="text-4xl sm:text-5xl font-bold text-center">MDX Blog</h1>
-      <SearchPosts
-        currentPage={currentPage}
-        postsPerPage={postsPerPage}
-        limit={postsPerPage}
-      />
-
+      <div className="flex gap-4 justify-between items-center">
+        <SearchPosts
+          currentPage={currentPage}
+          limit={postsPerPage}
+          numBlogs={blogs.length}
+        />
+        <SortPosts
+        // currentPage={currentPage}
+        // limit={postsPerPage}
+        // numBlogs={blogs.length}
+        />
+      </div>
       <div>
         {blogs.length === 0 ? (
-          <div className="text-center text-lg flex flex-col justify-center ">
+          <div className="text-center text-lg flex flex-col justify-evenly ">
             <span className="pb-[100px] pt-[100px]">
               No blog posts found on this page...
             </span>
@@ -97,7 +104,9 @@ const Blog = async ({
           ) : (
             <span>
               <Link
-                href={`/blog?limit=${postsPerPage}&page=${1}&search=${searchTerm}`}
+                href={`/blog?limit=${postsPerPage}&page=${1}${
+                  searchTerm ? `&search=${searchTerm}` : ""
+                }`}
               >{`<<`}</Link>
             </span>
           )}
@@ -106,9 +115,9 @@ const Blog = async ({
           ) : (
             <Link
               className={``}
-              href={`/blog?limit=${postsPerPage}&page=${
-                currentPage - 1
-              }&search=${searchTerm}`}
+              href={`/blog?limit=${postsPerPage}&page=${currentPage - 1}${
+                searchTerm ? `&search=${searchTerm}` : ""
+              }`}
             >
               Previous
             </Link>
@@ -121,9 +130,9 @@ const Blog = async ({
           ) : (
             <Link
               className={``}
-              href={`/blog?limit=${postsPerPage}&page=${
-                currentPage + 1
-              }&search=${searchTerm}`}
+              href={`/blog?limit=${postsPerPage}&page=${currentPage + 1}${
+                searchTerm ? `&search=${searchTerm}` : ""
+              }`}
             >
               Next
             </Link>
@@ -133,7 +142,9 @@ const Blog = async ({
           ) : (
             <span>
               <Link
-                href={`/blog?limit=${postsPerPage}&page=${totalPages}&search=${searchTerm}`}
+                href={`/blog?limit=${postsPerPage}&page=${totalPages}${
+                  searchTerm ? `&search=${searchTerm}` : ""
+                }`}
               >{`>>`}</Link>
             </span>
           )}
@@ -143,6 +154,7 @@ const Blog = async ({
           postsPerPage={postsPerPage}
           currentPage={currentPage}
           searchTerm={searchTerm as string}
+          numBlogs={blogs.length}
         />
         {/* pagination end */}
       </div>

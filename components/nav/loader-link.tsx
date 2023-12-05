@@ -37,7 +37,7 @@ function LoaderLink({
       )}
 
       {loading && (
-        <div className="absolute bg-black opacity-60 w-full h-full flex justify-center items-center">
+        <div className="absolute top-0 left-0 opacity-60 bg-white dark:bg-black flex justify-center items-center w-full h-screen">
           <Loader className="animate-spin w-[28px] h-[28px]" />
         </div>
       )}

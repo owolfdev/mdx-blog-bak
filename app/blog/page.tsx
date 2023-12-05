@@ -89,7 +89,10 @@ const Blog = async ({
         ) : (
           <ul className="flex flex-col gap-4">
             {blogs.map((blog: BlogPost) => (
-              <li key={blog.slug} className=" border px-3 py-2 rounded-xl">
+              <li
+                key={blog.slug}
+                className=" border px-3 py-2 rounded-xl cursor-pointer"
+              >
                 <LoaderLink isButton={false} url={`/blog/${blog.slug}`}>
                   <div className="">
                     <h3 className="text-2xl font-bold">{blog.title}</h3>

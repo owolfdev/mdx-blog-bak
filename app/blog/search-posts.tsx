@@ -9,10 +9,12 @@ const SearchPosts = ({
   currentPage,
   limit,
   numBlogs,
+  sort,
 }: {
   currentPage: number;
   limit: number;
   numBlogs: number;
+  sort: string;
 }) => {
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -45,13 +47,13 @@ const SearchPosts = ({
         router.push(
           `/blog?limit=${limit}&page=${1}${
             searchTerm ? `&search=${searchTerm}` : ""
-          }`
+          }${sort !== "date_desc" ? `&sort=${sort}` : ""}`
         );
       } else {
         router.push(
           `/blog?limit=${limit}&page=${currentPage}${
             searchTerm ? `&search=${searchTerm}` : ""
-          }`
+          }${sort !== "date_desc" ? `&sort=${sort}` : ""}`
         );
       }
     }, 500),
@@ -70,6 +72,7 @@ const SearchPosts = ({
         <MagnifyingGlassIcon className="w-[24px] h-[24px]" />
       </div>
       <div className="w-full">
+        {/* <div>{sort}</div> */}
         <Input
           ref={inputRef}
           type="text"

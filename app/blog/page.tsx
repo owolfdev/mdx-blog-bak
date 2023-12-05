@@ -27,15 +27,17 @@ const Blog = async ({
   const postsPerPage =
     typeof searchParams.limit === "string" ? Number(searchParams.limit) : 10;
   const searchTerm = searchParams.search || "";
+  const sort = searchParams.sort || "date_desc";
 
-  const defaultButton = buttonVariants({ variant: "default", size: "default" });
+  // const defaultButton = buttonVariants({ variant: "default", size: "default" });
 
   //filter by type, page, limit
   const { posts: blogs, totalPosts } = getPosts(
     "blog",
     postsPerPage,
     currentPage,
-    searchTerm
+    searchTerm,
+    sort as string
   );
 
   const totalPages = Math.ceil(totalPosts / postsPerPage);
@@ -44,6 +46,8 @@ const Blog = async ({
   const isPreviousDisabled = currentPage <= 1;
   const isNextDisabled = currentPage >= totalPages;
   const disabledLinkStyle = "opacity-50 cursor-not-allowed";
+
+  const isDateDesc = sort === "date_desc";
 
   // Utility function to trim description
   function trimDescription(description: string) {
@@ -65,11 +69,13 @@ const Blog = async ({
           currentPage={currentPage}
           limit={postsPerPage}
           numBlogs={blogs.length}
+          sort={sort as string}
         />
         <SortPosts
-        // currentPage={currentPage}
-        // limit={postsPerPage}
-        // numBlogs={blogs.length}
+          sort={sort as string}
+          currentPage={currentPage}
+          limit={postsPerPage}
+          searchTerm={searchTerm as string}
         />
       </div>
       <div>
@@ -117,7 +123,7 @@ const Blog = async ({
               className={``}
               href={`/blog?limit=${postsPerPage}&page=${currentPage - 1}${
                 searchTerm ? `&search=${searchTerm}` : ""
-              }`}
+              }${!isDateDesc ? `&sort=${sort}` : ""}`}
             >
               Previous
             </Link>
@@ -132,7 +138,7 @@ const Blog = async ({
               className={``}
               href={`/blog?limit=${postsPerPage}&page=${currentPage + 1}${
                 searchTerm ? `&search=${searchTerm}` : ""
-              }`}
+              }${!isDateDesc ? `&sort=${sort}` : ""}`}
             >
               Next
             </Link>
@@ -143,7 +149,11 @@ const Blog = async ({
             <span>
               <Link
                 href={`/blog?limit=${postsPerPage}&page=${totalPages}${
-                  searchTerm ? `&search=${searchTerm}` : ""
+                  searchTerm
+                    ? `&search=${searchTerm}${
+                        !isDateDesc ? `&sort=${sort}` : ""
+                      }`
+                    : ""
                 }`}
               >{`>>`}</Link>
             </span>

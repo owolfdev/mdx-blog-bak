@@ -1,5 +1,4 @@
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
+import BlogLink from "@/components/nav/blog-link";
 
 export default function Home() {
   return (
@@ -10,9 +9,7 @@ export default function Home() {
       <p className="text-center">
         This is a simple blog built with Next.js and MDX.
       </p>
-      <Button className="w-[200px]">
-        <Link href="/blog">Start Reading</Link>
-      </Button>
+      <BlogLink />
     </div>
   );
 }

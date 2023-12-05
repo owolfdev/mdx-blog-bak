@@ -9,9 +9,11 @@ function BlogLink() {
 
   return (
     <div className="flex flex-col gap-8 justify-center align-middle items-center">
-      <Button onClick={() => setLoading(true)} className="w-[200px]">
-        <Link href="/blog">Start Reading</Link>
-      </Button>
+      <Link href="/blog">
+        <Button onClick={() => setLoading(true)} className="w-[200px]">
+          Start Reading
+        </Button>
+      </Link>
       <div>{loading && <Loader className="animate-spin" />}</div>
     </div>
   );

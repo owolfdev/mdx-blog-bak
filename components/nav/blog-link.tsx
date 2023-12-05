@@ -5,11 +5,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
 function BlogLink() {
-  const [loading, setLoading] = useState<boolean>(true);
-
-  useEffect(() => {
-    setLoading(false);
-  }, []);
+  const [loading, setLoading] = useState<boolean>(false);
 
   return (
     <div className="flex flex-col gap-8 justify-center align-middle items-center">

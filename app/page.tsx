@@ -1,4 +1,4 @@
-import BlogLink from "@/components/nav/blog-link";
+import LoaderLink from "@/components/nav/loader-link";
 
 export default function Home() {
   return (
@@ -9,7 +9,9 @@ export default function Home() {
       <p className="text-center">
         This is a simple blog built with Next.js and MDX.
       </p>
-      <BlogLink />
+      <LoaderLink isButton={true} url="/blog">
+        Go to Blog
+      </LoaderLink>
     </div>
   );
 }

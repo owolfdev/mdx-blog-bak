@@ -4,6 +4,7 @@ import SelectLimitPosts from "./select-limit-posts";
 import SearchPosts from "./search-posts";
 import SortPosts from "./sort-posts";
 import { getPosts } from "@/lib/posts.mjs";
+import LoaderLink from "@/components/nav/loader-link";
 
 interface BlogPost {
   slug: string;
@@ -89,13 +90,15 @@ const Blog = async ({
           <ul className="flex flex-col gap-4">
             {blogs.map((blog: BlogPost) => (
               <li key={blog.slug} className=" border px-3 py-2 rounded-xl">
-                <Link href={`/blog/${blog.slug}`}>
-                  <h3 className="text-2xl font-bold">{blog.title}</h3>
-                  <div className="text-sm">{blog.formattedDate}</div>
-                  <div title={blog.description}>
-                    {trimDescription(blog.description)}
+                <LoaderLink isButton={false} url={`/blog/${blog.slug}`}>
+                  <div className="">
+                    <h3 className="text-2xl font-bold">{blog.title}</h3>
+                    <div className="text-sm">{blog.formattedDate}</div>
+                    <div title={blog.description}>
+                      {trimDescription(blog.description)}
+                    </div>
                   </div>
-                </Link>
+                </LoaderLink>
               </li>
             ))}
           </ul>

@@ -2,7 +2,9 @@
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Loader } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
+import Link from "next/link";
+import { set } from "lodash";
 
 function LoaderLink({
   url,
@@ -17,23 +19,43 @@ function LoaderLink({
   const [loading, setLoading] = useState(false);
   const router = useRouter();
 
+  const defaultButton = buttonVariants({ variant: "default", size: "default" });
+
   const handleClick = async () => {
     setTimeout(() => {
       setLoading(true);
     }, 200);
+
     router.push(url);
+  };
+
+  const handleClick2 = async () => {
+    setTimeout(() => {
+      setLoading(true);
+    }, 200);
+    setTimeout(() => {
+      setLoading(false);
+    }, 1000);
+    // router.push(url);
   };
 
   return (
     <div className="flex flex-col gap-8 justify-center align-middle items-center">
       {isButton ? (
-        <Button onClick={handleClick} className="w-[200px]">
+        <Link
+          href={url}
+          onClick={handleClick}
+          className={`w-[200px] ${defaultButton}`}
+        >
           {children}
-        </Button>
+        </Link>
       ) : (
-        <div onClick={handleClick} className="w-full">
+        // <div onClick={handleClick} className="w-full">
+        //   {children}
+        // </div>
+        <Link href={url} onClick={handleClick2} className="w-full">
           {children}
-        </div>
+        </Link>
       )}
 
       {loading && (

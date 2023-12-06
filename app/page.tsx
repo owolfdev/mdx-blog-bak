@@ -10,7 +10,7 @@ export default function Home() {
         This is a simple blog built with Next.js and MDX.
       </p>
       <LoaderLink isButton={true} url="/blog">
-        Go to Blog
+        Start Reading
       </LoaderLink>
     </div>
   );

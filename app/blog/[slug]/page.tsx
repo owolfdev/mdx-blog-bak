@@ -4,6 +4,8 @@ import matter from "gray-matter";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import YouTube from "@/components/mdx/youtube";
 import Code from "@/components/mdx/code-component/code";
+import { getPost } from "@/lib/posts.mjs";
+import { notFound } from "next/navigation";
 
 import type { Metadata, ResolvingMetadata } from "next";
 
@@ -26,30 +28,11 @@ export async function generateMetadata(
   };
 }
 
-async function getPost({ slug }: { slug: string }) {
-  try {
-    const markdownFile = fs.readFileSync(
-      path.join("data/posts", slug + ".mdx"),
-      "utf-8"
-    );
-    const { data: frontMatter, content } = matter(markdownFile);
-    return {
-      frontMatter,
-      slug,
-      content,
-    };
-  } catch (error) {
-    console.error("Error fetching post:", error);
-    throw new Error(`Unable to fetch the post for slug: ${slug}`);
-  }
-}
-
 export async function generateStaticParams() {
   const files = fs.readdirSync(path.join("data/posts"));
   const params = files.map((filename) => ({
     slug: filename.replace(".mdx", ""),
   }));
-
   return params;
 }
 

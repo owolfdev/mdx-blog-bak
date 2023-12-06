@@ -36,24 +36,29 @@ function SelectLimitPosts({
     }
   }, [searchParams, postsPerPage]);
 
+  useEffect(() => {
+    if (numBlogs === 0) {
+      // alert(`No blogs found ${numBlogs}`);
+      router.push(
+        `/blog?limit=${localPostsPerPage}&page=${1}${
+          searchTerm ? `&search=${searchTerm}` : ""
+        }`
+      );
+    } else {
+      // alert(`Blogs found", ${numBlogs}`);
+      router.push(
+        `/blog?limit=${localPostsPerPage}&page=${currentPage}${
+          searchTerm ? `&search=${searchTerm}` : ""
+        }`
+      );
+    }
+  }, [localPostsPerPage, numBlogs]);
+
   // Function to handle selection change
   const handlePostsPerPageChange = (newLimit: number) => {
     setLocalPostsPerPage(newLimit);
     //setLimit(newLimit); // Update the URL parameter, if applicable
     // You might need to fetch posts again here or it could be handled by a useEffect
-    if (numBlogs === 0) {
-      router.push(
-        `/blog?limit=${newLimit}&page=${1}${
-          searchTerm ? `&search=${searchTerm}` : ""
-        }`
-      );
-    } else {
-      router.push(
-        `/blog?limit=${newLimit}&page=${currentPage}${
-          searchTerm ? `&search=${searchTerm}` : ""
-        }`
-      );
-    }
   };
 
   return (

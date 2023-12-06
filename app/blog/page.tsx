@@ -1,10 +1,10 @@
 import Link from "next/link";
-import { Button, buttonVariants } from "@/components/ui/button";
 import SelectLimitPosts from "./select-limit-posts";
 import SearchPosts from "./search-posts";
 import SortPosts from "./sort-posts";
 import { getPosts } from "@/lib/posts.mjs";
 import LoaderLink from "@/components/nav/loader-link";
+import PushNavigator from "@/components/nav/push-navigator";
 
 interface BlogPost {
   slug: string;
@@ -170,6 +170,9 @@ const Blog = async ({
         />
         {/* pagination end */}
       </div>
+      {/* <div>
+        <PushNavigator blogs={blogs} />
+      </div> */}
     </div>
   );
 };

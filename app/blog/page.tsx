@@ -118,7 +118,7 @@ const Blog = async ({
               <Link
                 href={`/blog?limit=${postsPerPage}&page=${1}${
                   searchTerm ? `&search=${searchTerm}` : ""
-                }`}
+                }${!isDateDesc ? `&sort=${sort}` : ""}`}
               >{`<<`}</Link>
             </span>
           )}
@@ -155,12 +155,8 @@ const Blog = async ({
             <span>
               <Link
                 href={`/blog?limit=${postsPerPage}&page=${totalPages}${
-                  searchTerm
-                    ? `&search=${searchTerm}${
-                        !isDateDesc ? `&sort=${sort}` : ""
-                      }`
-                    : ""
-                }`}
+                  searchTerm ? `&search=${searchTerm}` : ""
+                }${!isDateDesc ? `&sort=${sort}` : ""}`}
               >{`>>`}</Link>
             </span>
           )}

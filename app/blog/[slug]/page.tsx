@@ -13,7 +13,7 @@ type Props = {
   params: { slug: string };
 };
 
-export async function getPost({ slug }: { slug: string }) {
+async function getPost({ slug }: { slug: string }) {
   try {
     const markdownFile = fs.readFileSync(
       path.join("data/posts", slug + ".mdx"),

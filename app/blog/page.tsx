@@ -167,6 +167,7 @@ const Blog = async ({
           currentPage={currentPage}
           searchTerm={searchTerm as string}
           numBlogs={blogs.length}
+          sort={sort as string}
         />
         {/* pagination end */}
       </div>

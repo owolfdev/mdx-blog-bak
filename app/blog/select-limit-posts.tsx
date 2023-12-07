@@ -7,11 +7,13 @@ function SelectLimitPosts({
   currentPage,
   searchTerm,
   numBlogs,
+  sort,
 }: {
   postsPerPage: number;
   currentPage: number;
   searchTerm: string;
   numBlogs: number;
+  sort: string;
 }) {
   const [localPostsPerPage, setLocalPostsPerPage] = useState(postsPerPage);
 
@@ -28,8 +30,8 @@ function SelectLimitPosts({
         limit = "10";
       }
     }
-    console.log("searchParams", searchParams);
-    console.log("limit", limit);
+    // console.log("searchParams", searchParams);
+    // console.log("limit", limit);
     const limitFromUrl = parseInt(limit as string);
     if (!isNaN(limitFromUrl) && limitFromUrl !== localPostsPerPage) {
       setLocalPostsPerPage(limitFromUrl);
@@ -37,22 +39,23 @@ function SelectLimitPosts({
   }, [searchParams, postsPerPage]);
 
   useEffect(() => {
-    if (numBlogs === 0) {
+    // console.log("numBlogs", numBlogs, "sort", sort);
+    if (numBlogs && numBlogs === 0) {
       // alert(`No blogs found ${numBlogs}`);
       router.push(
         `/blog?limit=${localPostsPerPage}&page=${1}${
           searchTerm ? `&search=${searchTerm}` : ""
-        }`
+        }${sort !== "date_desc" ? `&sort=${sort}` : ""}`
       );
     } else {
       // alert(`Blogs found", ${numBlogs}`);
       router.push(
         `/blog?limit=${localPostsPerPage}&page=${currentPage}${
           searchTerm ? `&search=${searchTerm}` : ""
-        }`
+        }${sort !== "date_desc" ? `&sort=${sort}` : ""}`
       );
     }
-  }, [localPostsPerPage, numBlogs]);
+  }, [numBlogs, sort, localPostsPerPage]);
 
   // Function to handle selection change
   const handlePostsPerPageChange = (newLimit: number) => {

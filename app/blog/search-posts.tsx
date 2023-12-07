@@ -2,7 +2,8 @@
 import { usePathname, useSearchParams, useRouter } from "next/navigation";
 import { Input } from "@/components/ui/input";
 import { MagnifyingGlassIcon } from "@radix-ui/react-icons";
-import { useState, useCallback, useEffect, useRef } from "react";
+import { useState, useCallback, useEffect, useRef, use } from "react";
+import React from "react";
 import debounce from "lodash/debounce";
 
 const SearchPosts = ({
@@ -41,8 +42,12 @@ const SearchPosts = ({
     }
   }, [searchParams]);
 
-  const updateSearch = useCallback(
-    debounce((searchTerm: string) => {
+  useEffect(() => {
+    // console.log("sort", sort);
+  }, [sort]);
+
+  const searchForTerm = useCallback(
+    (searchTerm: string) => {
       if (numBlogs === 0) {
         router.push(
           `/blog?limit=${limit}&page=${1}${
@@ -56,8 +61,15 @@ const SearchPosts = ({
           }${sort !== "date_desc" ? `&sort=${sort}` : ""}`
         );
       }
-    }, 500),
-    []
+    },
+    [limit, currentPage, sort, router]
+  );
+
+  const updateSearch = useCallback(
+    debounce((searchTerm: string) => {
+      searchForTerm(searchTerm);
+    }, 1500),
+    [searchForTerm] // dependencies of the debounced function
   );
 
   const handleChange = (event: any) => {
@@ -66,23 +78,30 @@ const SearchPosts = ({
     updateSearch(searchTerm);
   };
 
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const inputValue = event.currentTarget.searchTerm.value;
+    searchForTerm(inputValue);
+  };
+
   return (
     <div className="flex gap-2 items-center w-1/2 sm:w-2/3 ">
       <div className="icon-container">
         <MagnifyingGlassIcon className="w-[24px] h-[24px]" />
-      </div>
-      <div className="w-full">
-        {/* <div>{sort}</div> */}
-        <Input
-          ref={inputRef}
-          type="text"
-          name="searchTerm"
-          placeholder="Search"
-          value={inputValue}
-          onChange={handleChange}
-          className="text-lg sm:text-sm"
-        />
-      </div>
+      </div>{" "}
+      <form onSubmit={handleSubmit}>
+        <div className="w-full">
+          <Input
+            ref={inputRef}
+            type="text"
+            name="searchTerm"
+            placeholder="Search"
+            value={inputValue}
+            onChange={handleChange}
+            className="text-lg sm:text-sm"
+          />
+        </div>
+      </form>
     </div>
   );
 };

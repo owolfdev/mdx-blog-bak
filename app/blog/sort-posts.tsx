@@ -30,7 +30,7 @@ function SortPosts({
   const router = useRouter();
 
   const changeSort = () => {
-    console.log("changeSort");
+    // console.log("changeSort");
     const theSort = `${sortBy}_${sortOrder}`;
     const isDateDesc = theSort === "date_desc";
     router.push(
@@ -77,7 +77,14 @@ function SortPosts({
           <SelectTrigger className="">
             <SelectValue placeholder="Sort By" />
           </SelectTrigger>
-          <SelectContent>
+          <SelectContent
+            ref={(ref) => {
+              if (!ref) return;
+              ref.ontouchstart = (e) => {
+                e.preventDefault();
+              };
+            }}
+          >
             <SelectItem value="date">
               <span className="sm:text-sm text-lg">Date</span>
             </SelectItem>

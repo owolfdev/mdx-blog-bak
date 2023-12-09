@@ -1,7 +1,6 @@
 import Link from "next/link";
-import { buttonVariants } from "@/components/ui/button";
+import { buttonVariants, Button } from "@/components/ui/button";
 import { ModeToggle } from "@/components/theme-toggle";
-import { HamburgerMenuIcon } from "@radix-ui/react-icons";
 import AuthComponent from "@/components/nav/auth-component";
 import NavComponent from "./nav-component";
 

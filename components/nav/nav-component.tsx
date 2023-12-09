@@ -3,6 +3,14 @@ import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { HamburgerMenuIcon } from "@radix-ui/react-icons";
 
+import { Button } from "@/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+
 const NavComponent: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const menuRef = useRef<HTMLDivElement>(null);
@@ -32,7 +40,19 @@ const NavComponent: React.FC = () => {
     <div className="flex items-center justify-between w-full">
       <div className="sm:flex gap-6 items-center hidden">
         <div className="font-bold text-2xl tracking-tight">
-          <Link href="/">MDX Blog</Link>
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <h1 className="text-3xl">MDX Blog</h1>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end">
+              <Link href="/">
+                <DropdownMenuItem>Home</DropdownMenuItem>
+              </Link>
+              <Link href="/blog">
+                <DropdownMenuItem>Blog</DropdownMenuItem>
+              </Link>
+            </DropdownMenuContent>
+          </DropdownMenu>
         </div>
         {/* <nav>
           <Link href="/about">About</Link>

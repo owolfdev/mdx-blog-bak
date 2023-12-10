@@ -31,18 +31,21 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 
+import { MultiSelect } from "./rs-multi-select";
+
 const formSchema = z.object({
   type: z.string().optional(),
-  title: z.string().min(2, {
+  title: z.string().min(3, {
     message: "Title must be at least 2 characters.",
   }),
-  categories: z.string().optional(),
-  description: z.string().min(2, {
-    message: "Description must be at least 2 characters.",
+  description: z.string().min(15, {
+    message: "Description must be at least 15 characters.",
   }),
   content: z.string().min(2, {
     message: "Content must be at least 2 characters.",
   }),
+  categories: z.array(z.string()).nonempty(),
+  tags: z.string().optional(),
 });
 
 export function CreatePostForm() {
@@ -50,19 +53,41 @@ export function CreatePostForm() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      type: "",
+      type: "blog",
       title: "",
-      categories: "",
       description: "",
       content: "",
+      categories: ["Development"],
+      tags: "",
     },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-    console.log(values);
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    // Endpoint URL where you want to send the POST request
+    const endpoint = "/api/save-file-locally"; // Replace with your actual API route
+
+    try {
+      const response = await fetch(endpoint, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(values),
+      });
+
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+
+      const result = await response.json();
+      console.log("Success:", result);
+      // Handle success scenario (e.g., show a success message, redirect, etc.)
+    } catch (error) {
+      console.error("Error:", error);
+      // Handle error scenario (e.g., show an error message)
+    }
   }
+
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
@@ -76,7 +101,7 @@ export function CreatePostForm() {
               <Select onValueChange={field.onChange} defaultValue={field.value}>
                 <FormControl>
                   <SelectTrigger className="w-[180px]">
-                    <SelectValue placeholder="Post Type" />
+                    <SelectValue placeholder="Select post type" />
                   </SelectTrigger>
                 </FormControl>
                 <SelectContent>
@@ -97,19 +122,6 @@ export function CreatePostForm() {
               <FormLabel>Post Title</FormLabel>
               <FormControl>
                 <Input placeholder="Title" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="categories"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Categories</FormLabel>
-              <FormControl>
-                <Input placeholder="Categories" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -141,6 +153,36 @@ export function CreatePostForm() {
                   placeholder="Content"
                   {...field}
                 />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        {/* categories - multi-select */}
+        <FormField
+          control={form.control}
+          name="categories"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>categories</FormLabel>
+              <FormControl>
+                <MultiSelect
+                  selectedCategories={field.value}
+                  setSelectedCategories={field.onChange}
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="tags"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Tags</FormLabel>
+              <FormControl>
+                <Input placeholder="Enter tags (comma separated)" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>

@@ -1,4 +1,4 @@
-import { generatePostsCache } from "@/lib/posts.mjs";
+import { generatePostsCache } from "@/lib/posts-utils.mjs";
 
 import { NextResponse } from "next/server";
 

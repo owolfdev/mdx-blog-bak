@@ -4,13 +4,19 @@ import { saveFileLocally } from "@/lib/save-file-locally";
 export async function POST(req: Request) {
   if (req.method === "POST") {
     try {
-      // Parse the request body
       const data = await req.json();
 
-      console.log("Saving file locally with data:", data);
+      // // Get current date and format it as YYYY-MM-DD
+      // const currentDate = new Date();
+      // const formattedDate = currentDate.toISOString().split("T")[0]; // This will format the date as YYYY-MM-DD
 
-      // Call saveFileLocally with the parsed data
-      console.log("Saving file locally with data:", data);
+      // // Add the formatted date to the data object
+      // const dataWithDate = { ...data, date: formattedDate };
+
+      // console.log("Saving file locally with data:", data);
+
+      // // Call saveFileLocally with the parsed data
+      // console.log("Saving file locally with data:", data);
       saveFileLocally(data);
 
       return new Response(JSON.stringify("File saved successfully"), {

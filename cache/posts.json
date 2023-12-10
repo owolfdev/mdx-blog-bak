@@ -3,6 +3,23 @@
     "slug": ".DS_Store"
   },
   {
+    "slug": "author-test",
+    "type": "blog",
+    "author": "Oliver Wolfson",
+    "title": "Author Test",
+    "date": "2023-12-10",
+    "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+    "categories": [
+      "Development"
+    ],
+    "tags": [
+      "react",
+      "javascript"
+    ],
+    "image": "/images/default.jpg",
+    "path": "author-test.mdx"
+  },
+  {
     "slug": "eighth-blog",
     "date": "2023-12-01",
     "type": "blog",
@@ -161,6 +178,23 @@
       "post",
       "lorem"
     ]
+  },
+  {
+    "slug": "test-5",
+    "type": "blog",
+    "author": "undefined",
+    "title": "Test 5",
+    "date": "2023-12-10",
+    "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+    "categories": [
+      "Development"
+    ],
+    "tags": [
+      "react",
+      "javascript"
+    ],
+    "image": "/images/default.jpg",
+    "path": "test-5.mdx"
   },
   {
     "slug": "third-blog",

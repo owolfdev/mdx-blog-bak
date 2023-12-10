@@ -1,6 +1,8 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+
+import { useUser } from "@clerk/nextjs";
 
 import {
   Select,
@@ -62,9 +64,22 @@ export function CreatePostForm() {
     },
   });
 
+  const { user } = useUser(); // Retrieve user information
+  const authorName = user ? user.fullName : "Anonymous"; // Replace 'fullName' with the appropriate field
+
+  useEffect(() => {
+    console.log("user:", user);
+  }, [user]);
+
   async function onSubmit(values: z.infer<typeof formSchema>) {
     // Endpoint URL where you want to send the POST request
     const endpoint = "/api/save-file-locally"; // Replace with your actual API route
+
+    // Add the author data to the submission values
+    const submissionData = {
+      ...values,
+      author: authorName,
+    };
 
     try {
       const response = await fetch(endpoint, {
@@ -72,7 +87,7 @@ export function CreatePostForm() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(values),
+        body: JSON.stringify(submissionData),
       });
 
       if (!response.ok) {
@@ -81,6 +96,10 @@ export function CreatePostForm() {
 
       const result = await response.json();
       console.log("Success:", result);
+
+      // Reset the form here
+      form.reset();
+
       // Handle success scenario (e.g., show a success message, redirect, etc.)
     } catch (error) {
       console.error("Error:", error);

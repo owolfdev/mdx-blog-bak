@@ -2,7 +2,7 @@ import Link from "next/link";
 import SelectLimitPosts from "./select-limit-posts";
 import SearchPosts from "./search-posts";
 import SortPosts from "./sort-posts";
-import { getPosts } from "@/lib/posts.mjs";
+import { getPosts } from "@/lib/posts-utils.mjs";
 import LoaderLink from "@/components/nav/loader-link";
 import PushNavigator from "@/components/nav/push-navigator";
 

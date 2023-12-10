@@ -4,7 +4,7 @@ import matter from "gray-matter";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import YouTube from "@/components/mdx/youtube";
 import Code from "@/components/mdx/code-component/code";
-// import { getPost } from "@/lib/posts.mjs";
+
 import { notFound } from "next/navigation";
 
 import type { Metadata, ResolvingMetadata } from "next";

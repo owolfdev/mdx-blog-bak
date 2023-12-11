@@ -4,7 +4,6 @@ import SearchPosts from "./search-posts";
 import SortPosts from "./sort-posts";
 import { getPosts } from "@/lib/posts-utils.mjs";
 import LoaderLink from "@/components/nav/loader-link";
-import PushNavigator from "@/components/nav/push-navigator";
 
 interface BlogPost {
   slug: string;

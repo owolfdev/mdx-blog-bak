@@ -19,7 +19,7 @@ async function getPost({ slug }: { slug: string }) {
       path.join("data/posts", slug + ".mdx"),
       "utf-8"
     );
-    const { data: frontMatter, content } = matter(markdownFile);
+    const { data: frontMatter = {}, content = "" } = matter(markdownFile) || {};
 
     return {
       frontMatter,
@@ -68,9 +68,15 @@ export default async function BlogPage({
   };
 
   return (
-    <article className="mdx ">
-      <h1>{props.frontMatter.title}</h1>
-      <MDXRemote source={props.content} components={components} />
-    </article>
+    <div className="flex flex-col gap-6">
+      <div>
+        <h1 className="text-5xl font-bold">{props.frontMatter.title}</h1>
+        <div>{props.frontMatter.date}</div>
+        <div>By: {props.frontMatter.author}</div>
+      </div>
+      <article className="mdx">
+        <MDXRemote source={props.content} components={components} />
+      </article>
+    </div>
   );
 }

@@ -127,3 +127,14 @@
     /* Any additional styles for the .mdx container on smaller screens */
   }
 }
+
+.mdx pre {
+  /* other styles */
+  margin-bottom: 30px !important; /* Adjust this value as needed */
+}
+
+.mdx iframe {
+  /* other styles */
+  margin-bottom: 30px !important; /* Adjust this value as needed */
+  margin-top: 10px !important;
+}

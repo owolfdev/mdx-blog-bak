@@ -1,0 +1,63 @@
+---
+type: "blog"
+author: "Olivier Wolfson"
+title: "Hi Mom"
+date: "2023-12-11"
+description: "Some test blog post."
+categories:
+  - Development
+tags:
+  - react
+  - javascript
+image: "/images/default.jpg"
+path: "hi-mom.mdx"
+---
+
+Thank you for sharing your component code. Based on this, there are a few key areas to focus on to ensure that your MDX content is rendered correctly and to handle cases where certain values might be undefined.
+
+1. **Error Handling in `getPost` Function**: In your `getPost` function, you are correctly trying to catch errors when reading the file. However, the `notFound()` function you're returning in the catch block is not the standard way to handle errors in a Next.js API. Instead, you might want to return `null` or an empty object and handle this case in your `BlogPage` component.
+
+2. **Handling Undefined Values**: In your `BlogPage` component, you directly access properties like `props.frontMatter.title`. If `getPost` fails to fetch the post or if the front matter is missing these properties, this will lead to an error. You should add checks to handle these cases. For example:
+
+   ```jsx
+   <h1 className="text-5xl font-bold">{props.frontMatter?.title || "Default Title"}</h1>
+   <div>{props.frontMatter?.date || "No Date"}</div>
+   <div>By: {props.frontMatter?.author || "Unknown Author"}</div>
+   ```
+
+3. **Check for Empty `props`**: Before rendering the `MDXRemote` component, ensure that `props` is not null or undefined. This can be done using a conditional rendering statement.
+
+4. **Debugging**: Add console logs in the `getPost` function and in the `BlogPage` component to verify the data structure and content of `props`.
+
+5. **Using `notFound`**: If you want to redirect to a 404 page when a post is not found, consider using `throw new Error("Not Found")` in your `getPost` function and then handle this in your `getStaticProps` or `getServerSideProps` (whichever you are using) to return a 404 status.
+
+6. **Asynchronous Default Export**: Your default export `BlogPage` is an async function. Generally, Next.js page components should not be asynchronous. Fetching data and preparing props should be done in `getStaticProps` or `getServerSideProps`.
+
+7. **Data Fetching in Next.js**: Consider using `getStaticProps` for fetching your MDX content. This function runs at build time in production and generates static pages. If your posts are not frequently updated, this is usually a more efficient way to handle static content like blog posts.
+
+Here's an example of how you might adjust your page component:
+
+```jsx
+// This function should be in the same file but outside your component
+export async function getStaticProps({ params }) {
+  const props = await getPost(params);
+
+  if (!props) {
+    return {
+      notFound: true,
+    };
+  }
+
+  return {
+    props, // will be passed to the page component as props
+  };
+}
+
+function BlogPage({ frontMatter, content }) {
+  // your existing component logic
+}
+
+export default BlogPage;
+```
+
+By implementing these suggestions, your code will be more robust in handling edge cases and errors, and you'll be aligning with best practices for Next.js applications.

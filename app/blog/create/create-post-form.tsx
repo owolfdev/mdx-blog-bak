@@ -4,6 +4,8 @@ import React, { useState, useEffect } from "react";
 
 import { useUser } from "@clerk/nextjs";
 
+import { v4 as uuidv4 } from "uuid";
+
 import {
   Select,
   SelectContent,
@@ -15,11 +17,9 @@ import {
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
-import { on } from "events";
 
 import { Textarea } from "@/components/ui/textarea";
-import SelectPostType from "./select-post-type";
-import { Label } from "@/components/ui/label";
+
 import { Input } from "@/components/ui/input";
 
 import { Button } from "@/components/ui/button";
@@ -79,6 +79,7 @@ export function CreatePostForm() {
     const submissionData = {
       ...values,
       author: authorName,
+      id: uuidv4(),
     };
 
     try {

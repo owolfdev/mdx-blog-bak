@@ -35,7 +35,7 @@ function LoaderLink({
     }, 200); // (200)
     setTimeout(() => {
       setLoading(false);
-    }, 1000); // 1 second (1000)
+    }, 4000); // 1 second (1000)
     // router.push(url);
   };
 

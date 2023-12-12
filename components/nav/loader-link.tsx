@@ -24,7 +24,7 @@ function LoaderLink({
   const handleClick = async () => {
     setTimeout(() => {
       setLoading(true);
-    }, 200);
+    }, 200); // (200)
 
     router.push(url);
   };
@@ -32,10 +32,10 @@ function LoaderLink({
   const handleClick2 = async () => {
     setTimeout(() => {
       setLoading(true);
-    }, 200);
+    }, 200); // (200)
     setTimeout(() => {
       setLoading(false);
-    }, 1000);
+    }, 1000); // 1 second (1000)
     // router.push(url);
   };
 
@@ -58,12 +58,12 @@ function LoaderLink({
             {children}
           </Link>
         )}
+        {loading && (
+          <div className="fixed top-0 left-0 dark:bg-opacity-60 bg-opacity-60 bg-white dark:bg-[#010816] flex justify-center items-center w-full h-screen">
+            <Loader className="animate-spin w-[28px] h-[28px]" />
+          </div>
+        )}
       </div>
-      {loading && (
-        <div className="absolute top-0 left-0 opacity-60 bg-white dark:bg-black flex justify-center items-center w-full h-screen">
-          <Loader className="animate-spin w-[28px] h-[28px]" />
-        </div>
-      )}
     </>
   );
 }

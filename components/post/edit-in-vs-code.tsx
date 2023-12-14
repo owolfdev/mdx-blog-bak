@@ -5,13 +5,13 @@ import { Button } from "@/components/ui/button";
 function EditInVSCode(file: any) {
   const handleEditInVSCode = () => {
     console.log("Edit in VS Code");
-    fetch("/api/edit-file-in-vs-code", {
-      method: "POST",
-      body: JSON.stringify({ file: file as string }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    // fetch("/api/edit-file-in-vs-code", {
+    //   method: "POST",
+    //   body: JSON.stringify({ file: file as string }),
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    // });
   };
   return (
     <div>

@@ -1,6 +1,6 @@
 import fs from "fs";
 import path from "path";
-import matter from "gray-matter";
+// import matter from "gray-matter";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import YouTube from "@/components/mdx/youtube";
 import Code from "@/components/mdx/code-component/code";
@@ -10,11 +10,12 @@ import { Button } from "@/components/ui/button";
 
 import Link from "next/link";
 
-import { notFound } from "next/navigation";
+// import { notFound } from "next/navigation";
 
 import type { Metadata, ResolvingMetadata } from "next";
-import { Edit } from "lucide-react";
-import EditInVSCode from "@/components/post/edit-in-vs-code";
+import EditPostButton from "./edit-post-button";
+// import { Edit } from "lucide-react";
+// import EditInVSCode from "@/components/post/edit-in-vs-code";
 
 type Props = {
   params: { slug: string };
@@ -65,12 +66,12 @@ export default async function BlogPage({
         <div>By: {props.frontMatter.author}</div>
       </div>
       <div className="flex gap-4">
-        <div>
+        {/* <div>
           <Link href={`/blog/edit/${slug}`}>
             <Button>Edit Post</Button>
           </Link>
-          {/* <div>{JSON.stringify(props.frontMatter)}</div> */}
-        </div>
+        </div> */}
+        <EditPostButton slug={slug} author={props.frontMatter.author} />
         {/* <div>
           <EditInVSCode file={props.frontMatter.path as string} />
         </div> */}

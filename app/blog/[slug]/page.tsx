@@ -4,33 +4,21 @@ import matter from "gray-matter";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import YouTube from "@/components/mdx/youtube";
 import Code from "@/components/mdx/code-component/code";
+import { getPost } from "@/lib/posts-utils.mjs";
+
+import { Button } from "@/components/ui/button";
+
+import Link from "next/link";
 
 import { notFound } from "next/navigation";
 
 import type { Metadata, ResolvingMetadata } from "next";
+import { Edit } from "lucide-react";
+import EditInVSCode from "@/components/post/edit-in-vs-code";
 
 type Props = {
   params: { slug: string };
 };
-
-async function getPost({ slug }: { slug: string }) {
-  try {
-    const markdownFile = fs.readFileSync(
-      path.join("data/posts", slug + ".mdx"),
-      "utf-8"
-    );
-    const { data: frontMatter = {}, content = "" } = matter(markdownFile) || {};
-
-    return {
-      frontMatter,
-      slug,
-      content,
-    };
-  } catch (error) {
-    console.error("Error fetching post:", error);
-    return notFound();
-  }
-}
 
 export async function generateMetadata(
   { params }: Props,
@@ -62,6 +50,8 @@ export default async function BlogPage({
 }) {
   const props = await getPost(params);
 
+  const slug = params.slug;
+
   const components = {
     pre: Code,
     YouTube,
@@ -73,6 +63,17 @@ export default async function BlogPage({
         <h1 className="text-5xl font-bold">{props.frontMatter.title}</h1>
         <div>{props.frontMatter.date}</div>
         <div>By: {props.frontMatter.author}</div>
+      </div>
+      <div className="flex gap-4">
+        <div>
+          <Link href={`/blog/edit/${slug}`}>
+            <Button>Edit Post</Button>
+          </Link>
+          {/* <div>{JSON.stringify(props.frontMatter)}</div> */}
+        </div>
+        <div>
+          <EditInVSCode file={props.frontMatter.path as string} />
+        </div>
       </div>
       <article className="mdx">
         <MDXRemote source={props.content} components={components} />

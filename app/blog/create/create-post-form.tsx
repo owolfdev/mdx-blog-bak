@@ -33,7 +33,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 
-import { MultiSelect } from "./rs-multi-select";
+import { MultiSelect } from "@/components/rs-multi-select";
 
 const formSchema = z.object({
   type: z.string().optional(),
@@ -116,7 +116,7 @@ export function CreatePostForm() {
           name="type"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Post Title</FormLabel>
+              <FormLabel>Post Type</FormLabel>
 
               <Select onValueChange={field.onChange} defaultValue={field.value}>
                 <FormControl>

@@ -21,6 +21,7 @@
   },
   {
     "slug": "eighth-blog",
+    "id": "d0c2b84f-40ea-4b00-81ed-70865d0960ae",
     "date": "2023-12-01",
     "type": "blog",
     "title": "8. Eighth blog post",
@@ -37,12 +38,16 @@
   },
   {
     "slug": "eleventh-blog",
+    "id": "d0c2b84f-40ea-4b00-81ed-70865d0960ae",
     "date": "2023-12-03",
     "type": "blog",
     "title": "11. Eleventh blog post",
     "description": "Blog post 11. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?",
     "image": "https://images.unsplash.com/photo-15153771005703-5b1f2e4d7c00",
     "author": "John Doe",
+    "categories": [
+      "Development"
+    ],
     "tags": [
       "blog",
       "post",
@@ -51,12 +56,16 @@
   },
   {
     "slug": "fifth-blog",
+    "id": "d0c2b84f-40ea-4b00-81ed-70865d0960ae",
     "date": "2023-11-28",
     "type": "blog",
     "title": "5. Fifth blog post",
     "description": "Blog post 5.",
     "image": "https://images.unsplash.com/photo-1621619856624-42fd193a0661",
     "author": "John Doe",
+    "categories": [
+      "Development"
+    ],
     "tags": [
       "blog",
       "post",
@@ -65,12 +74,16 @@
   },
   {
     "slug": "first-blog",
+    "id": "d0c2b84f-40ea-4b00-81ed-70865d0960ae",
     "date": "2023-11-01",
     "type": "blog",
     "title": "1. Exploring the Beauty of Nature",
     "description": "A journey through the stunning landscapes captured in photographs.",
     "image": "https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0",
     "author": "John Doe",
+    "categories": [
+      "Development"
+    ],
     "tags": [
       "nature",
       "photography",
@@ -80,12 +93,16 @@
   },
   {
     "slug": "fourth-blog",
+    "id": "d0c2b84f-40ea-4b00-81ed-70865d0960ae",
     "date": "2023-11-27",
     "type": "blog",
     "title": "4. Fourth blog post",
     "description": "Another blog post.",
     "image": "https://source.unsplash.com/1600x900/?nature,water",
     "author": "John Doe",
+    "categories": [
+      "Development"
+    ],
     "tags": [
       "tag1",
       "tag2",
@@ -110,13 +127,161 @@
     "path": "hi-mom.mdx"
   },
   {
+    "slug": "new-tester-1",
+    "id": "d0c2b84f-40ea-4b00-81ed-70865d0960ae",
+    "type": "blog",
+    "author": "Olivier Wolfson",
+    "title": "New Tester Ho Ho Ho Hee Haw Hoooo Shheeeee",
+    "date": "2023-12-13",
+    "description": "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. ",
+    "categories": [
+      "Development"
+    ],
+    "tags": [
+      "react",
+      "javascript"
+    ],
+    "image": "/images/default.jpg",
+    "path": "new-tester-1.mdx"
+  },
+  {
+    "slug": "new-tester-2",
+    "id": "d0c2b84f-40ea-4b00-81ed-70865d0960ae",
+    "type": "blog",
+    "author": "Olivier Wolfson",
+    "title": "New Tester 2",
+    "date": "2023-12-13",
+    "description": "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. ",
+    "categories": [
+      "Development"
+    ],
+    "tags": [
+      "react",
+      "javascript"
+    ],
+    "image": "/images/default.jpg",
+    "path": "new-tester-2.mdx"
+  },
+  {
+    "slug": "new-tester-3",
+    "id": "d0c2b84f-40ea-4b00-81ed-70865d0960ae",
+    "type": "blog",
+    "author": "Olivier Wolfson",
+    "title": "New Tester",
+    "date": "2023-12-13",
+    "description": "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. ",
+    "categories": [
+      "Development"
+    ],
+    "tags": [
+      "react",
+      "javascript"
+    ],
+    "image": "/images/default.jpg",
+    "path": "new-tester-3.mdx"
+  },
+  {
+    "slug": "new-tester-asdfa-1",
+    "id": "d0c2b84f-40ea-4b00-81ed-70865d0960ae",
+    "type": "blog",
+    "author": "Olivier Wolfson",
+    "title": "New Tester asdfan gsdfgsdfgsd",
+    "date": "2023-12-13",
+    "description": "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. ",
+    "categories": [
+      "Development"
+    ],
+    "tags": [
+      "react",
+      "javascript"
+    ],
+    "image": "/images/default.jpg",
+    "path": "new-tester-asdfa-1.mdx"
+  },
+  {
+    "slug": "new-tester-blogger",
+    "id": "d0c2b84f-40ea-4b00-81ed-70865d0960ae",
+    "type": "blog",
+    "author": "Olivier Wolfson",
+    "title": "New Tester Blogger",
+    "date": "2023-12-13",
+    "description": "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. ",
+    "categories": [
+      "Development"
+    ],
+    "tags": [
+      "react",
+      "javascript"
+    ],
+    "image": "/images/default.jpg",
+    "path": "new-tester-blogger.mdx"
+  },
+  {
+    "slug": "new-tester-hello-1",
+    "id": "d0c2b84f-40ea-4b00-81ed-70865d0960ae",
+    "type": "blog",
+    "author": "Olivier Wolfson",
+    "title": "New Tester Hello",
+    "date": "2023-12-13",
+    "description": "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. ",
+    "categories": [
+      "Development"
+    ],
+    "tags": [
+      "react",
+      "javascript"
+    ],
+    "image": "/images/default.jpg",
+    "path": "new-tester-hello-1.mdx"
+  },
+  {
+    "slug": "new-tester-test",
+    "id": "d0c2b84f-40ea-4b00-81ed-70865d0960ae",
+    "type": "blog",
+    "author": "Olivier Wolfson",
+    "title": "New Tester Test",
+    "date": "2023-12-13",
+    "description": "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. ",
+    "categories": [
+      "Development"
+    ],
+    "tags": [
+      "react",
+      "javascript"
+    ],
+    "image": "/images/default.jpg",
+    "path": "new-tester-test.mdx"
+  },
+  {
+    "slug": "new-tester",
+    "id": "d0c2b84f-40ea-4b00-81ed-70865d0960ae",
+    "type": "blog",
+    "author": "Olivier Wolfson",
+    "title": "New Tester 3",
+    "date": "undefined",
+    "description": "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. ",
+    "categories": [
+      "Development"
+    ],
+    "tags": [
+      "react",
+      "javascript"
+    ],
+    "image": "/images/default.jpg",
+    "path": "new-tester.mdx"
+  },
+  {
     "slug": "ninth-blog",
+    "id": "d0c2b84f-40ea-4b00-81ed-70865d0960ae",
     "date": "2023-12-02",
     "type": "blog",
     "title": "9. Ninth blog post",
     "description": "Blog post 9.",
     "image": "https://images.unsplash.com/photo-1515377905703-5b1f2e4d7c00",
     "author": "John Doe",
+    "categories": [
+      "Development"
+    ],
     "tags": [
       "blog",
       "post",
@@ -126,12 +291,16 @@
   },
   {
     "slug": "project-post",
+    "id": "d0c2b84f-40ea-4b00-81ed-70865d0960ae",
     "date": "2023-11-04",
     "type": "project",
     "title": "Project Post",
     "description": "A Project Post.",
     "image": "https://source.unsplash.com/1600x900/?nature,water",
     "author": "John Doe",
+    "categories": [
+      "Development"
+    ],
     "tags": [
       "tag1",
       "tag2",
@@ -140,12 +309,16 @@
   },
   {
     "slug": "second-blog",
+    "id": "d0c2b84f-40ea-4b00-81ed-70865d0960ae",
     "date": "2023-11-25",
     "type": "blog",
     "title": "2. Essential Coding Tips for Beginners",
     "description": "A beginner's guide to coding with some useful tips and code examples.",
     "image": "https://images.unsplash.com/photo-1516259762381-22954d7d3ad2?q=80&w=2689&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     "author": "John Doe",
+    "categories": [
+      "Development"
+    ],
     "tags": [
       "tag1",
       "tag2",
@@ -156,12 +329,16 @@
   },
   {
     "slug": "seventh-blog",
+    "id": "d0c2b84f-40ea-4b00-81ed-70865d0960ae",
     "date": "2023-11-30",
     "type": "blog",
     "title": "7. Seventh blog post",
     "description": "Blog post 7.",
     "image": "https://images.unsplash.com/photo-1515377905703-5b1f2e4d7c00",
     "author": "John Doe",
+    "categories": [
+      "Development"
+    ],
     "tags": [
       "blog",
       "post",
@@ -176,6 +353,9 @@
     "description": "Blog post 6.",
     "image": "https://images.unsplash.com/photo-1515377905703-5b1f2e4d7c00",
     "author": "John Doe",
+    "categories": [
+      "Development"
+    ],
     "tags": [
       "blog",
       "post",
@@ -184,12 +364,16 @@
   },
   {
     "slug": "tenth-blog",
+    "id": "d0c2b84f-40ea-4b00-81ed-70865d0960ae",
     "date": "2023-12-03",
     "type": "blog",
     "title": "10. Tenth blog post",
     "description": "Blog post 10.",
     "image": "https://images.unsplash.com/photo-15153771005703-5b1f2e4d7c00",
     "author": "John Doe",
+    "categories": [
+      "Development"
+    ],
     "tags": [
       "blog",
       "post",
@@ -198,12 +382,16 @@
   },
   {
     "slug": "third-blog",
+    "id": "d0c2b84f-40ea-4b00-81ed-70865d0960ae",
     "date": "2023-11-26",
     "type": "blog",
     "title": "3. The Influence of Music",
     "description": "Exploring how music impacts our emotions and daily life.",
     "image": "https://images.unsplash.com/photo-1516259762381-22954d7d3ad2?q=80&w=2689&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     "author": "John Doe",
+    "categories": [
+      "Development"
+    ],
     "tags": [
       "music",
       "emotions",
@@ -213,12 +401,16 @@
   },
   {
     "slug": "twelfth-blog",
+    "id": "d0c2b84f-40ea-4b00-81ed-70865d0960ae",
     "date": "2023-12-03",
     "type": "blog",
     "title": "12. Twelfth blog post",
     "description": "Blog post 12. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
     "image": "https://images.unsplash.com/photo-15153771005703-5b1f2e4d7c00",
     "author": "John Doe",
+    "categories": [
+      "Development"
+    ],
     "tags": [
       "blog",
       "post",
@@ -230,9 +422,9 @@
     "id": "793f4e1a-585d-495d-8568-5e8152d359a0",
     "type": "blog",
     "author": "Olivier Wolfson",
-    "title": "UUID Test",
-    "date": "2023-12-11",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    "title": "UUID Testerooni 1000",
+    "date": "undefined",
+    "description": "UUID Testerooni 1000 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
     "categories": [
       "Development"
     ],

@@ -1,19 +1,11 @@
-import { NextResponse } from "next/server";
-import { saveFileLocally } from "@/lib/save-file-locally";
-import { generatePostsCache } from "@/lib/posts-utils.mjs";
+import { openInVSCode } from "@/lib/open-file-in-vs-code";
 
 export async function POST(req: Request) {
   if (req.method === "POST") {
     try {
       const data = await req.json();
 
-      const filePath = saveFileLocally(data);
-
-      return new Response(JSON.stringify(filePath), {
-        headers: {
-          "content-type": "application/json",
-        },
-      });
+      openInVSCode(data);
     } catch (error) {
       console.error("Error:", error);
       return new Response(

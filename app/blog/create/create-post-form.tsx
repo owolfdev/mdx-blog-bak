@@ -2,6 +2,8 @@
 
 import React, { useState, useEffect } from "react";
 
+import { generatePostsCache } from "@/lib/posts-utils.mjs";
+
 import { useUser } from "@clerk/nextjs";
 
 import { v4 as uuidv4 } from "uuid";
@@ -35,6 +37,8 @@ import {
 
 import { MultiSelect } from "@/components/rs-multi-select";
 
+import { useRouter } from "next/navigation";
+
 const formSchema = z.object({
   type: z.string().optional(),
   title: z.string().min(3, {
@@ -66,6 +70,8 @@ export function CreatePostForm() {
 
   const { user } = useUser(); // Retrieve user information
   const authorName = user ? user.fullName : "Anonymous"; // Replace 'fullName' with the appropriate field
+
+  const router = useRouter();
 
   useEffect(() => {
     console.log("user:", user);
@@ -100,6 +106,8 @@ export function CreatePostForm() {
 
       // Reset the form here
       form.reset();
+
+      router.push(`/blog/${result}`); // Redirect to the blog page
 
       // Handle success scenario (e.g., show a success message, redirect, etc.)
     } catch (error) {

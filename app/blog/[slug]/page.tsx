@@ -71,9 +71,9 @@ export default async function BlogPage({
           </Link>
           {/* <div>{JSON.stringify(props.frontMatter)}</div> */}
         </div>
-        <div>
+        {/* <div>
           <EditInVSCode file={props.frontMatter.path as string} />
-        </div>
+        </div> */}
       </div>
       <article className="mdx">
         <MDXRemote source={props.content} components={components} />

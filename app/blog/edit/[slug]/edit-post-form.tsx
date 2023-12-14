@@ -74,6 +74,13 @@ export function EditPostForm({ postData }: { postData: any }) {
 
   useEffect(() => {
     console.log("user:", user);
+    fetch("/api/open-in-vs-code", {
+      method: "POST",
+      body: JSON.stringify(postData),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
   }, [user]);
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
@@ -230,7 +237,7 @@ export function EditPostForm({ postData }: { postData: any }) {
           <Button type="submit">Edit Post</Button>
         </form>
       </Form>
-      <div>{JSON.stringify(postData.frontMatter)}</div>
+      {/* <div>{JSON.stringify(postData.frontMatter)}</div> */}
     </>
   );
 }

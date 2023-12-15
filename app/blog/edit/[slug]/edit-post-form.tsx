@@ -6,6 +6,8 @@ import { useUser } from "@clerk/nextjs";
 
 import { useRouter } from "next/navigation";
 
+import CachePostsButton from "@/components/admin/cache-posts-button";
+
 import {
   Select,
   SelectContent,
@@ -74,13 +76,13 @@ export function EditPostForm({ postData }: { postData: any }) {
 
   useEffect(() => {
     console.log("user:", user);
-    fetch("/api/open-in-vs-code", {
-      method: "POST",
-      body: JSON.stringify(postData),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    // fetch("/api/open-in-vs-code", {
+    //   method: "POST",
+    //   body: JSON.stringify(postData),
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    // });
   }, [user]);
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
@@ -126,6 +128,17 @@ export function EditPostForm({ postData }: { postData: any }) {
       // Handle error scenario (e.g., show an error message)
     }
   }
+
+  const handleOpenInVSCode = async () => {
+    fetch("/api/open-in-vs-code", {
+      method: "POST",
+      body: JSON.stringify(postData),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    router.push("/blog");
+  };
 
   return (
     <>
@@ -234,9 +247,16 @@ export function EditPostForm({ postData }: { postData: any }) {
               </FormItem>
             )}
           />
-          <Button type="submit">Edit Post</Button>
+          <div className="flex gap-3">
+            <Button type="submit">Edit Post</Button>
+            <Button type="button" onClick={handleOpenInVSCode}>
+              Open File In VS Code
+            </Button>
+          </div>
         </form>
       </Form>
+      {/* <CachePostsButton /> */}
+
       {/* <div>{JSON.stringify(postData.frontMatter)}</div> */}
     </>
   );

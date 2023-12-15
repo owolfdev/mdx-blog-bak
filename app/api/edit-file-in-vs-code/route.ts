@@ -7,7 +7,7 @@ export async function POST(req: Request) {
     try {
       const data = await req.json();
 
-      // editFileInVSCode(data);
+      editFileInVSCode(data);
 
       return new Response(JSON.stringify("File saved successfully"), {
         headers: {

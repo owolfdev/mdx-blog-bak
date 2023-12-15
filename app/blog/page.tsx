@@ -5,6 +5,8 @@ import SortPosts from "./sort-posts";
 import { getPosts } from "@/lib/posts-utils.mjs";
 import LoaderLink from "@/components/nav/loader-link";
 
+import CachePostsButton from "@/components/admin/cache-posts-button";
+
 interface BlogPost {
   slug: string;
   type: string;
@@ -64,6 +66,9 @@ const Blog = async ({
   return (
     <div className="flex flex-col gap-8 pb-6">
       <h1 className="text-4xl sm:text-5xl font-bold text-center">MDX Blog</h1>
+      <div>
+        <CachePostsButton />
+      </div>
       <div className="flex gap-4 justify-between items-center">
         <SearchPosts
           currentPage={currentPage}

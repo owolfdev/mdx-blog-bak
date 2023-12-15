@@ -17,11 +17,11 @@ function AuthComponent() {
           <PlusIcon className="w-[18px] h-[18px]" />
         </Button>
       </Link>
-      <Link title="Administration" href="/admin">
+      {/* <Link title="Administration" href="/admin">
         <Button variant="outline" size="icon">
           <GearIcon className="w-[18px] h-[18px]" />
         </Button>{" "}
-      </Link>
+      </Link> */}
       <UserButton
         afterSignOutUrl="/"
         userProfileMode="navigation"

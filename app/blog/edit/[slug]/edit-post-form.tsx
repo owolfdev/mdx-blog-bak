@@ -8,6 +8,20 @@ import { useRouter } from "next/navigation";
 
 import CachePostsButton from "@/components/admin/cache-posts-button";
 
+import { generatePostsCache } from "@/lib/posts-utils.mjs";
+
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+
+import { Label } from "@/components/ui/label";
+
 import {
   Select,
   SelectContent,
@@ -121,6 +135,7 @@ export function EditPostForm({ postData }: { postData: any }) {
 
       //redirect to the post page
       router.push(`/blog/${slug}`);
+      router.refresh();
 
       // Handle success scenario (e.g., show a success message, redirect, etc.)
     } catch (error) {
@@ -138,6 +153,28 @@ export function EditPostForm({ postData }: { postData: any }) {
       },
     });
     router.push("/blog");
+  };
+
+  const handleDeletePost = async () => {
+    await fetch("/api/delete-post", {
+      method: "POST",
+      body: JSON.stringify(postData),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    await fetch("/api/cache-posts", {
+      method: "POST",
+      body: JSON.stringify(postData),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    router.push("/blog");
+    router.refresh();
+    console.log("delete post");
   };
 
   return (
@@ -256,6 +293,35 @@ export function EditPostForm({ postData }: { postData: any }) {
         </form>
       </Form>
       {/* <CachePostsButton /> */}
+      <Dialog>
+        <DialogTrigger asChild>
+          <div>
+            <Button
+              variant="destructive"
+              type="button"
+              // onClick={handleDeletePost}
+            >
+              Delete Post
+            </Button>
+          </div>
+        </DialogTrigger>
+        <DialogContent className="sm:max-w-[425px]">
+          <DialogHeader>
+            <DialogTitle>Delete Post</DialogTitle>
+            <DialogDescription>
+              Are you sure you want to delete the current post?
+            </DialogDescription>
+          </DialogHeader>
+          <div className="grid gap-4 py-4"></div>
+          <DialogFooter>
+            <div className="w-full">
+              <Button variant="destructive" onClick={handleDeletePost}>
+                OK Delete Post
+              </Button>
+            </div>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
 
       {/* <div>{JSON.stringify(postData.frontMatter)}</div> */}
     </>

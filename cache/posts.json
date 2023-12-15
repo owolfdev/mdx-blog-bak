@@ -3,12 +3,12 @@
     "slug": ".DS_Store"
   },
   {
-    "slug": "some-test",
-    "id": "ad750939-6992-41f2-a2fe-ccd84d4b05b6",
+    "slug": "auqua-man",
+    "id": "b3bf1956-f3f6-42fd-b459-239364640c87",
     "type": "blog",
     "author": "Oliver Wolfson",
-    "title": "Some Test 2",
-    "date": "2023-12-14",
+    "title": "Auqua Man",
+    "date": "2023-12-15",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
     "categories": [
       "Development"
@@ -18,35 +18,33 @@
       "javascript"
     ],
     "image": "/images/default.jpg",
-    "path": "some-test.mdx"
+    "path": "auqua-man.mdx"
   },
   {
-    "slug": "spiderman",
-    "id": "cf3af1b3-7840-4d08-885b-4f6850dd8abb",
+    "slug": "batman",
+    "id": "81dbefe4-2653-4f91-9068-42b26449919b",
     "type": "blog",
-    "author": "Olivier Wolfson",
-    "title": "Spiderman Super Hero Movie",
-    "date": "2023-12-14",
-    "description": "web web web asdfas fasdfasdf",
+    "author": "Oliver Wolfson",
+    "title": "Batman",
+    "date": "2023-12-15",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
     "categories": [
-      "Development",
-      "Industry"
+      "Development"
     ],
     "tags": [
-      "react",
-      "javascript"
+      "blog"
     ],
     "image": "/images/default.jpg",
-    "path": "spiderman.mdx"
+    "path": "batman.mdx"
   },
   {
-    "slug": "super-man",
-    "id": "035e3aa1-057e-4496-a5c2-2111afe9f00d",
+    "slug": "superman",
+    "id": "3d9bcac4-49e8-4ee5-8be0-bc49e3d39b6f",
     "type": "blog",
-    "author": "Olivier Wolfson",
-    "title": "Super Man Dude",
-    "date": "2023-12-14",
-    "description": "asdf aasdfa fasdfasdf fa",
+    "author": "Oliver Wolfson",
+    "title": "Superman",
+    "date": "2023-12-15",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
     "categories": [
       "Development"
     ],
@@ -55,39 +53,21 @@
       "javascript"
     ],
     "image": "/images/default.jpg",
-    "path": "super-man.mdx"
+    "path": "superman.mdx"
   },
   {
-    "slug": "the-green-lantern",
-    "id": "1d48303f-f579-4dd5-8be3-3a0c9e6e1ba3",
+    "slug": "wonder-woman",
+    "id": "5018c2d9-98fa-441f-bf49-8d1c35a71579",
     "type": "blog",
-    "author": "Olivier Wolfson",
-    "title": "The Green Lantern 555",
-    "date": "2023-12-14",
-    "description": "Green Lantern is the name of several superheroes appearing in American comic books published by DC Comics. They fight evil with the aid of rings that grant them a variety of extraordinary powers, all of which come from imagination, fearlessness, and the electromagnetic spectrum of emotional willpower.[1] The characters are typically depicted as members of the Green Lantern Corps, an intergalactic law enforcement agency.",
+    "author": "Oliver Wolfson",
+    "title": "Wonder Woman",
+    "date": "2023-12-15",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
     "categories": [
       "Development"
     ],
     "tags": [
       "superheroes"
-    ],
-    "image": "/images/default.jpg",
-    "path": "the-green-lantern.mdx"
-  },
-  {
-    "slug": "wonder-woman",
-    "id": "af3dd508-a779-4882-b96d-7c2e893c5fe9",
-    "type": "blog",
-    "author": "Olivier Wolfson",
-    "title": "Wonder Woman",
-    "date": "2023-12-14",
-    "description": "asdfasd fsadfasd. fasdf",
-    "categories": [
-      "Development"
-    ],
-    "tags": [
-      "react",
-      "javascript"
     ],
     "image": "/images/default.jpg",
     "path": "wonder-woman.mdx"

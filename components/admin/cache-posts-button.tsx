@@ -3,8 +3,10 @@ import React from "react";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
 import { isDevMode } from "@/lib/utils";
+import { useUser } from "@clerk/nextjs";
 
 function CachePostsButton() {
+  const user = useUser();
   const router = useRouter();
   const handleCachePosts = async () => {
     const response = await fetch("/api/cache-posts", { method: "POST" });
@@ -25,7 +27,11 @@ function CachePostsButton() {
 
   return (
     <>
-      {isDevMode() && <Button onClick={handleCachePosts}>Cache Posts</Button>}
+      {isDevMode() && user.isSignedIn && (
+        <Button size="sm" onClick={handleCachePosts}>
+          Cache Posts
+        </Button>
+      )}
     </>
   );
 }

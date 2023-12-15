@@ -1,7 +1,5 @@
 import { generatePostsCache } from "@/lib/posts-utils.mjs";
 
-import { NextResponse } from "next/server";
-
 export async function POST(req: Request) {
   if (req.method === "POST") {
     console.log("Generating posts cache");

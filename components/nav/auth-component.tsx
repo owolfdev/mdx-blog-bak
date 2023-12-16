@@ -4,6 +4,7 @@ import Link from "next/link";
 import { LockClosedIcon, GearIcon, PlusIcon } from "@radix-ui/react-icons";
 import { UserButton } from "@clerk/nextjs";
 import { buttonVariants, Button } from "@/components/ui/button";
+import { isDevMode } from "@/lib/utils";
 
 import React from "react";
 
@@ -12,11 +13,13 @@ function AuthComponent() {
   const outlineButtonVariant = buttonVariants({ variant: "outline" });
   return isSignedIn ? (
     <div className="flex gap-4 items-center">
-      <Link title="Create post" href="/blog/create">
-        <Button variant="outline" size="icon">
-          <PlusIcon className="w-[18px] h-[18px]" />
-        </Button>
-      </Link>
+      {isDevMode() && (
+        <Link title="Create post" href="/blog/create">
+          <Button variant="outline" size="icon">
+            <PlusIcon className="w-[18px] h-[18px]" />
+          </Button>
+        </Link>
+      )}
       {/* <Link title="Administration" href="/admin">
         <Button variant="outline" size="icon">
           <GearIcon className="w-[18px] h-[18px]" />

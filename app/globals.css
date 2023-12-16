@@ -138,3 +138,10 @@
   margin-bottom: 30px !important; /* Adjust this value as needed */
   margin-top: 10px !important;
 }
+
+.gradient-text {
+  background: linear-gradient(45deg, #0090fd, #fd2060);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline;
+}

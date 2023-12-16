@@ -10,6 +10,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { Span } from "next/dist/trace";
 
 const NavComponent: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
@@ -42,7 +43,10 @@ const NavComponent: React.FC = () => {
         <div className="font-bold text-2xl tracking-tight">
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <h1 className="text-3xl">MDX Blog</h1>
+              <h1 className="text-3xl">
+                <span className="gradient-text">MDX</span>
+                <span>Blog</span>
+              </h1>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
               <Link href="/">

@@ -147,9 +147,9 @@
 }
 
 .animated-text .letter {
-  background: linear-gradient(45deg, #0090fd, #fd2060);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  /* background: linear-gradient(45deg, #0090fd, #fd2060); */
+  /* -webkit-background-clip: text; */
+  /* -webkit-text-fill-color: transparent; */
   display: inline-block; /* Ensure this is inline-block */
 }
 

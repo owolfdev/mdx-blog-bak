@@ -3,24 +3,6 @@
     "slug": ".DS_Store"
   },
   {
-    "slug": "auqua-man",
-    "id": "b3bf1956-f3f6-42fd-b459-239364640c87",
-    "type": "blog",
-    "author": "Oliver Wolfson",
-    "title": "Auqua Man",
-    "date": "2023-12-15",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    "categories": [
-      "Development"
-    ],
-    "tags": [
-      "react",
-      "javascript"
-    ],
-    "image": "/images/default.jpg",
-    "path": "auqua-man.mdx"
-  },
-  {
     "slug": "batman",
     "id": "81dbefe4-2653-4f91-9068-42b26449919b",
     "type": "blog",

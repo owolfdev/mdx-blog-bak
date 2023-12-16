@@ -24,7 +24,7 @@ function LoaderLink({
   const handleClick = async () => {
     setTimeout(() => {
       setLoading(true);
-    }, 200); // (200)
+    }, 400); // (200)
 
     router.push(url);
   };
@@ -32,7 +32,7 @@ function LoaderLink({
   const handleClick2 = async () => {
     setTimeout(() => {
       setLoading(true);
-    }, 200); // (200)
+    }, 400); // (200)
     setTimeout(() => {
       setLoading(false);
     }, 4000); // 1 second (1000)
@@ -59,8 +59,12 @@ function LoaderLink({
           </Link>
         )}
         {loading && (
-          <div className="fixed top-0 left-0 dark:bg-opacity-60 bg-opacity-60 bg-white dark:bg-[#010816] flex justify-center items-center w-full h-screen">
-            <Loader className="animate-spin w-[28px] h-[28px]" />
+          <div className="fixed top-0 left-0  bg-white dark:bg-[#010816] flex justify-center items-center w-full h-screen z-10 ">
+            <span className="animated-text text-4xl font-bold letter-spacing-0">
+              <span className="letter">M</span>
+              <span className="letter">D</span>
+              <span className="letter">X</span>
+            </span>
           </div>
         )}
       </div>

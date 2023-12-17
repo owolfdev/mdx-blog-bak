@@ -5,6 +5,9 @@ import SortPosts from "./sort-posts";
 import { getPosts } from "@/lib/posts-utils.mjs";
 import LoaderLink from "@/components/nav/loader-link";
 
+import BlogPostList from "./blog-post-list";
+import BlogPostGrid from "./blog-post-grid";
+
 import CachePostsButton from "@/components/admin/cache-posts-button";
 
 interface BlogPost {
@@ -53,7 +56,7 @@ const Blog = async ({
 
   // Utility function to trim description
   function trimDescription(description: string) {
-    const wordLimit = 20;
+    const wordLimit = 10;
     const words = description.split(" ");
 
     if (words.length > wordLimit) {
@@ -91,24 +94,26 @@ const Blog = async ({
             </span>
           </div>
         ) : (
-          <ul className="flex flex-col gap-4">
-            {blogs.map((blog: BlogPost) => (
-              <li
-                key={blog.slug}
-                className=" border px-3 py-2 rounded-xl cursor-pointer"
-              >
-                <LoaderLink isButton={false} url={`/blog/${blog.slug}`}>
-                  <div className="">
-                    <h3 className="text-2xl font-bold">{blog.title}</h3>
-                    <div className="text-sm">{blog.formattedDate}</div>
-                    <div title={blog.description}>
-                      {trimDescription(blog.description)}
-                    </div>
-                  </div>
-                </LoaderLink>
-              </li>
-            ))}
-          </ul>
+          <BlogPostList blogs={blogs} trimDescription={trimDescription} />
+          // <ul className="flex flex-col gap-4">
+          //   {blogs.map((blog: BlogPost) => (
+          //     <li
+          //       key={blog.slug}
+          //       className=" border px-3 py-2 rounded-xl cursor-pointer"
+          //     >
+          //       <LoaderLink isButton={false} url={`/blog/${blog.slug}`}>
+          //         <div className="">
+          //           <h3 className="text-2xl font-bold">{blog.title}</h3>
+          //           <div className="text-sm">{blog.formattedDate}</div>
+          //           <div title={blog.description}>
+          //             {trimDescription(blog.description)}
+          //           </div>
+          //         </div>
+          //       </LoaderLink>
+          //     </li>
+          //   ))}
+          // </ul>
+          // )}
         )}
         {/* pagination */}
         <div

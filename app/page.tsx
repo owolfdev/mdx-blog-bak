@@ -1,4 +1,5 @@
 import LoaderLink from "@/components/nav/loader-link";
+import AbstractArt from "@/components/graphics/abstract-image";
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
       <LoaderLink isButton={true} url="/blog">
         Start Reading
       </LoaderLink>
+      <AbstractArt />
     </div>
   );
 }

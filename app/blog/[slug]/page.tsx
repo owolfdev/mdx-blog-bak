@@ -5,6 +5,8 @@ import { MDXRemote } from "next-mdx-remote/rsc";
 import YouTube from "@/components/mdx/youtube";
 import Code from "@/components/mdx/code-component/code";
 import { getPost } from "@/lib/posts-utils.mjs";
+import Image from "next/image";
+import ImageComponent from "@/components/mdx/image";
 
 import { Button } from "@/components/ui/button";
 
@@ -56,6 +58,7 @@ export default async function BlogPage({
   const components = {
     pre: Code,
     YouTube,
+    ImageComponent,
   };
 
   return (

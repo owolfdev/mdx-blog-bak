@@ -1,4 +1,5 @@
 import Link from "next/link";
+import LoaderLink from "@/components/nav/loader-link";
 // import { BlogPost } from "@/interfaces.ts"; // Assuming interfaces.ts exists
 
 interface BlogPost {
@@ -26,7 +27,7 @@ const BlogPostList = ({ blogs, trimDescription }: BlogPostListProps) => {
           key={blog.slug}
           className="border px-3 py-2 rounded-xl cursor-pointer"
         >
-          <Link href={`/blog/${blog.slug}`}>
+          <LoaderLink isButton={false} url={`/blog/${blog.slug}`}>
             <div className="flex flex-col gap-3">
               <div>
                 <h3 className="text-2xl font-bold">{blog.title}</h3>
@@ -36,7 +37,7 @@ const BlogPostList = ({ blogs, trimDescription }: BlogPostListProps) => {
                 {trimDescription(blog.description)}
               </div>
             </div>
-          </Link>
+          </LoaderLink>
         </li>
       ))}
     </ul>
